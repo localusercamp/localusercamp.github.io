@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
     modules: [
         "@nuxt/eslint",
-        "nuxt-single-html",
+        // "nuxt-single-html",
     ],
 
     devtools: {
