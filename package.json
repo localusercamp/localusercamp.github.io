@@ -17,6 +17,7 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "nuxt-single-html": "^0.2.0",
     "vue-tsc": "^2.2.10"
   }
 }
