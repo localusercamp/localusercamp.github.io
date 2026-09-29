@@ -1,0 +1,111 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+
+  "SFC template": {
+		"scope": "vue,html",
+		"prefix": "v-sfc-template",
+		"body": [
+			"<template>",
+			"  <${1:div}>",
+			"    $0",
+			"  </$1>",
+			"</template>",
+		],
+		"description": "Бойлерплейт однофайлового компонента"
+	},
+
+  "SFC script": {
+		"scope": "vue,html",
+		"prefix": "v-sfc-script",
+		"body": [
+			"<script setup lang=\"ts\">",
+      "  $0",
+			"</script>",
+		],
+		"description": "Бойлерплейт однофайлового компонента"
+	},
+
+	"SFC template script": {
+		"scope": "vue,html",
+		"prefix": "v-sfc",
+		"body": [
+			"<template>",
+			"  <${1:div}>",
+			"    $0",
+			"  </$1>",
+			"</template>",
+			"",
+			"",
+			"",
+			"<script setup lang=\"ts\">",
+			"</script>",
+		],
+		"description": "Бойлерплейт однофайлового компонента"
+	},
+
+	"SFC template script:props,emits": {
+		"scope": "vue,html",
+		"prefix": "v-sfc-props-emits",
+		"body": [
+			"<template>",
+			"  <${1:div}>",
+			"    $0",
+			"  </$1>",
+			"</template>",
+			"",
+			"",
+			"",
+			"<script setup lang=\"ts\">",
+			"interface Props {",
+			"  $2",
+			"}",
+			"",
+			"const props = withDefaults(defineProps<Props>(), {",
+			"  $3",
+			"});",
+			"",
+			"",
+			"interface Emits {",
+			"  $4",
+			"}",
+			"",
+			"const emit = defineEmits<Emits>();",
+			"</script>",
+		],
+		"description": "Бойлерплейт однофайлового компонента: props, emits"
+	},
+
+  "Slot template": {
+		"scope": "vue,html",
+		"prefix": "v-template",
+		"body": [
+			"<template #${1}>",
+			"  $0",
+			"</template>",
+		],
+		"description": "Бойлерплейт темплейта"
+	},
+
+  "Vue Transition": {
+		"scope": "vue,html",
+		"prefix": "v-transition",
+		"body": [
+			"<transition",
+      "  enter-active-class=\"\"",
+      "  enter-from-class=\"\"",
+      "  enter-to-class=\"\"",
+      "  leave-active-class=\"\"",
+      "  leave-from-class=\"\"",
+      "  leave-to-class=\"\"",
+      ">",
+			"  $0",
+			"</transition>",
+		],
+		"description": "Бойлерплейт транзишена"
+	},
+}
