@@ -27,6 +27,10 @@ export default defineNuxtConfig({
 
     compatibilityDate: "2026-09-28",
 
+    nitro: {
+        preset: "github-pages",
+    },
+
     vite: {
         plugins: [
             tailwindcss(),
