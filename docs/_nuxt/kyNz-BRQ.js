@@ -1,0 +1,1 @@
+import{G as e,T as t,j as n}from"./BtfyBXsx.js";import{s as r}from"#entry";var i=n({__name:`index`,setup(n){return r({title:`Евгений Полозов | Fullstack Developer | Портфолио`}),(n,r)=>(e(),t(`div`))}});export{i as default};
