@@ -5,7 +5,7 @@
             'rounded-2',
             'hover:bg-neutral-100 dark:hover:bg-neutral-900',
             'p-1',
-            'text-primary-600',
+            'text-primary-500',
         ]"
         @click="toggleDarkMode()"
     >

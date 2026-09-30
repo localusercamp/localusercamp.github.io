@@ -11,7 +11,7 @@
 
         <main
             :class="[
-                'flex-1 max-w-content mx-auto',
+                'flex-1',
             ]"
         >
             <slot />

@@ -2,12 +2,10 @@
     <header
         :class="[
             'sticky top-0',
-            'border-b border-neutral-100',
-            'bg-neutral-50',
+            'border-b border-border-neutral',
+            'bg-surface',
             'py-6 px-8',
             'flex flex-row items-center justify-center',
-            'text-neutral-950',
-            'dark:text-white dark:border-neutral-900 dark:bg-neutral-950',
         ]"
     >
         <div
@@ -31,8 +29,7 @@
                             :class="[
                                 'font-mono font-bold',
                                 'text-4 leading-6',
-                                'text-neutral-950 dark:text-neutral-300',
-                                'hover:text-primary-500',
+                                'text-text-ghosty hover:text-primary-500',
                             ]"
                             v-text="link.text"
                         />

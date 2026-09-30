@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
 
 @theme {
     /* Breakpoints */
@@ -121,20 +122,20 @@
     --radius-16: 4rem;
 
     /* Spacing */
-    --spacing-content: 75rem;
+    --spacing-content: 64rem;
 
     /* Colors */
-    --color-primary-50: #eafbf3;
-    --color-primary-100: #d5f6e6;
-    --color-primary-200: #abedcd;
-    --color-primary-300: #81e4b4;
-    --color-primary-400: #57db9b;
-    --color-primary-500: #2dd282;
-    --color-primary-600: #24a868;
-    --color-primary-700: #1b7e4e;
-    --color-primary-800: #125434;
-    --color-primary-900: #092a1a;
-    --color-primary-950: #061d12;
+    --color-primary-50: #e5fff3;
+    --color-primary-100: #ccffe6;
+    --color-primary-200: #99ffce;
+    --color-primary-300: #66ffb5;
+    --color-primary-400: #33ff9c;
+    --color-primary-500: #00ff84;
+    --color-primary-600: #00cc69;
+    --color-primary-700: #00994f;
+    --color-primary-800: #006635;
+    --color-primary-900: #00331a;
+    --color-primary-950: #002412;
 
     --color-neutral-50: #f2f3f3;
     --color-neutral-100: #e4e7e6;
@@ -147,6 +148,13 @@
     --color-neutral-800: #303634;
     --color-neutral-900: #181b1a;
     --color-neutral-950: #111312;
+
+    --color-surface: var(--color-neutral-950);
+    --color-surface-accent: var(--color-neutral-900);
+    --color-border-neutral: var(--color-neutral-800);
+    --color-text-black: var(--color-neutral-900);
+    --color-text-white: #ffffff;
+    --color-text-ghosty: var(--color-neutral-300);
 
     /* Fonts */
     --font-inter: "Inter", sans-serif;
@@ -163,7 +171,34 @@
 
 @layer base {
     :root {
-        @apply scroll-smooth font-medium;
+        @apply scroll-smooth font-normal;
+    }
+
+    /* Redefine variables for dark theme */
+    .dark {
+        @apply text-text-white;
+    }
+
+    /* Redefine variables for light theme */
+    .light {
+        @apply text-text-black;
+
+        --color-primary-50: #feece6;
+        --color-primary-100: #fddace;
+        --color-primary-200: #fcb49c;
+        --color-primary-300: #fa8f6b;
+        --color-primary-400: #f96939;
+        --color-primary-500: #f74408;
+        --color-primary-600: #c63606;
+        --color-primary-700: #942905;
+        --color-primary-800: #631b03;
+        --color-primary-900: #310e02;
+        --color-primary-950: #230901;
+
+        --color-surface: var(--color-neutral-50);
+        --color-surface-accent: var(--color-neutral-100);
+        --color-border-neutral: var(--color-neutral-100);
+        --color-text-ghosty: var(--color-neutral-900);
     }
 
     html * {
