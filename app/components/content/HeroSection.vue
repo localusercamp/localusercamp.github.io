@@ -1,9 +1,5 @@
 <template>
-    <ui-content-section
-        :class="[
-            'border-b border-border-neutral',
-        ]"
-    >
+    <ContentSection id="about">
         <div
             :class="[
                 'py-20',
@@ -64,6 +60,7 @@
                     <ui-button
                         variant="solid"
                     >
+                        <icon-mail class="size-5 -ml-2" />
                         Связаться
                     </ui-button>
 
@@ -110,7 +107,7 @@
                 </ul>
             </div>
         </div>
-    </ui-content-section>
+    </ContentSection>
 </template>
 
 

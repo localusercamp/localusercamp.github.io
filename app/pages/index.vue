@@ -1,6 +1,10 @@
 <template>
     <article>
-        <HeroSection />
+        <ContentHeroSection />
+
+        <ContentSectionDivider />
+
+        <ContentSkillsSection />
     </article>
 </template>
 

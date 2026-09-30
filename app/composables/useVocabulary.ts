@@ -15,6 +15,9 @@ const ru = {
     dt_amount_of_projects: "проектов",
     dv_amount_of_technologies: "15+", // TODO: посчитать
     dt_amount_of_technologies: "технологии",
+    skills_pretitle: "Навыки",
+    skills_title: "Что я умею",
+    skills_subtitle: "Языки программирования, технологии и инструменты с которыми я умею работать.",
 } as const;
 
 const en = {
