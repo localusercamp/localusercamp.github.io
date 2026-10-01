@@ -197,8 +197,8 @@
 
         --color-surface: var(--color-neutral-50);
         --color-surface-accent: var(--color-neutral-100);
-        --color-border-neutral: var(--color-neutral-100);
-        --color-text-ghosty: var(--color-neutral-900);
+        --color-border-neutral: var(--color-neutral-200);
+        --color-text-ghosty: var(--color-neutral-700);
     }
 
     html * {

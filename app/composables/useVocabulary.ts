@@ -11,6 +11,7 @@ const ru = {
     contact_me: "Связаться",
     download_cv: "Скачать CV",
     dt_years_of_experience: "лет опыта",
+    dv_years_of_experience: "6+",
     dv_amount_of_projects: "7+", // TODO: посчитать
     dt_amount_of_projects: "проектов",
     dv_amount_of_technologies: "15+", // TODO: посчитать

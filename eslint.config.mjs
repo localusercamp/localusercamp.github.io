@@ -18,6 +18,7 @@ export default withNuxt(
             "vue/multi-word-component-names": "off",
             "vue/html-indent": ["error", 4],
             "vue/no-multi-spaces": ["off"],
+            "vue/max-attributes-per-line": ["error", { singleline: { max: 99 }, multiline: { max: 1 } }],
         },
     },
 );

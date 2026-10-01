@@ -8,15 +8,35 @@
                 'gap-0 sm:gap-16',
             ]"
         >
-            <img
-                src="/media/images/avatar.webp"
-                :alt="vs(['first_name', 'last_name'])"
-                :class="[
-                    'rounded-4',
-                    'size-64 shrink-0',
-                    'object-cover object-center',
-                ]"
-            >
+            <div class="relative shrink-0">
+                <ui-img
+                    src="/media/images/avatar.webp"
+                    :alt="vs(['first_name', 'last_name'])"
+                    :class="[
+                        'rounded-4',
+                        'size-64',
+                        'object-cover object-center',
+                    ]"
+                />
+
+                <client-only>
+                    <transition
+                        appear
+                        appear-active-class="duration-2000 ease-[linear(0,0.011_0.4%,0.052_0.9%,0.214_1.9%,1.303_6.3%,1.466_7.5%,1.502_8%,1.52_8.6%,1.515_9.1%,1.494_9.6%,1.41_10.6%,0.979_13.8%,0.834_15.1%,0.758_16.2%,0.73_17.3%,0.743_18.3%,0.786_19.3%,1.086_23.8%,1.125_24.9%,1.141_26%,1.134_27%,1.112_28%,0.956_32.5%,0.935_33.6%,0.927_34.7%,0.942_36.7%,1.023_41.2%,1.038_43.4%,1.03_45.4%,0.988_49.9%,0.98_52%,1.01_60.7%,0.995_69.4%,1.003_78%,1)]"
+                        appear-from-class="scale-0"
+                        appear-to-class="scale-100"
+                    >
+                        <ui-nuxt-certificate-link
+                            :class="[
+                                'transition-all duration-200',
+                                'absolute -bottom-6 -right-6',
+                                '-rotate-9',
+                                'hover:scale-110 hover:-rotate-4',
+                            ]"
+                        />
+                    </transition>
+                </client-only>
+            </div>
 
             <div>
                 <h1>
@@ -116,7 +136,7 @@
 const { v, vs } = useVocabulary();
 
 const datalist = computed(() => [
-    { term: v("dt_years_of_experience"),    value: getYearsOfExperience()         },
+    { term: v("dt_years_of_experience"),    value: v("dv_years_of_experience")    },
     { term: v("dt_amount_of_projects"),     value: v("dv_amount_of_projects")     },
     { term: v("dt_amount_of_technologies"), value: v("dv_amount_of_technologies") },
 ]);
