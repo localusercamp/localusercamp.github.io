@@ -19,23 +19,15 @@
                     ]"
                 />
 
-                <client-only>
-                    <transition
-                        appear
-                        appear-active-class="duration-2000 ease-[linear(0,0.011_0.4%,0.052_0.9%,0.214_1.9%,1.303_6.3%,1.466_7.5%,1.502_8%,1.52_8.6%,1.515_9.1%,1.494_9.6%,1.41_10.6%,0.979_13.8%,0.834_15.1%,0.758_16.2%,0.73_17.3%,0.743_18.3%,0.786_19.3%,1.086_23.8%,1.125_24.9%,1.141_26%,1.134_27%,1.112_28%,0.956_32.5%,0.935_33.6%,0.927_34.7%,0.942_36.7%,1.023_41.2%,1.038_43.4%,1.03_45.4%,0.988_49.9%,0.98_52%,1.01_60.7%,0.995_69.4%,1.003_78%,1)]"
-                        appear-from-class="scale-0"
-                        appear-to-class="scale-100"
-                    >
-                        <ui-nuxt-certificate-link
-                            :class="[
-                                'transition-all duration-200',
-                                'absolute -bottom-6 -right-6',
-                                '-rotate-9',
-                                'hover:scale-110 hover:-rotate-4',
-                            ]"
-                        />
-                    </transition>
-                </client-only>
+
+                <NuxtCertificateLink
+                    :class="[
+                        'transition-all duration-200',
+                        'absolute -bottom-6 -right-6',
+                        '-rotate-9',
+                        'hover:scale-110 hover:-rotate-4',
+                    ]"
+                />
             </div>
 
             <div>
@@ -134,6 +126,8 @@
 
 <script setup lang="ts">
 import { SectionWrapper } from "~/components/content/primitives";
+
+import NuxtCertificateLink from "./NuxtCertificateLink.vue";
 
 const { v, vs } = useVocabulary();
 

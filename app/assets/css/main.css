@@ -209,4 +209,8 @@
     [role="button"]:not(:disabled) {
         @apply cursor-pointer;
     }
+
+    button {
+        @apply text-start;
+    }
 }

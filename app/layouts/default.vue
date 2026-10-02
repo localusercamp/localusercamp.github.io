@@ -24,6 +24,6 @@
 
 
 <script setup lang="ts">
-
+import { LayoutHeader, LayoutFooter } from "~/components/layout";
 </script>
 

@@ -9,6 +9,25 @@
         <SectionDivider />
 
         <ProjectSection />
+
+        <!-- <client-only>
+            <div
+                class="size-100 bg-white text-black p-20"
+                :style="{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    transform: transform,
+                }"
+            >
+                width {{ width }}<br>
+                height {{ height }}<br>
+                left {{ left }}<br>
+                top {{ top }}<br>
+
+                transform {{ transform }}<br>
+            </div>
+        </client-only> -->
     </div>
 </template>
 
@@ -34,4 +53,20 @@ useSeoMeta({
     // twitterImage: "[twitter:image]",
     // twitterCard: "summary",
 });
+
+
+
+// const { width, height, left, top } = useWindowBox();
+
+// const transform = computed<string>(() => {
+//     const translateX = (width.value / 2) - 200;
+//     const translateY = (height.value / 2) - 200 + top.value;
+
+//     return `translate(${translateX}px, ${translateY}px)`;
+// });
+
+
+// onMounted(() => {
+//     console.log(window.pageYOffset);
+// })
 </script>
