@@ -8,6 +8,7 @@
     >
         <div
             :class="[
+                innerClass,
                 'max-w-content w-full',
             ]"
         >
@@ -19,4 +20,9 @@
 
 
 <script setup lang="ts">
+const {
+    innerClass,
+} = defineProps<{
+    innerClass?: string | string[];
+}>();
 </script>

@@ -1,16 +1,26 @@
 <template>
-    <article>
-        <ContentHeroSection />
+    <div>
+        <HeroSection />
 
-        <ContentSectionDivider />
+        <SectionDivider />
 
-        <ContentSkillsSection />
-    </article>
+        <SkillsSection />
+
+        <SectionDivider />
+
+        <ProjectSection />
+    </div>
 </template>
 
 
 
 <script setup lang="ts">
+import { SectionDivider } from "~/components/content/primitives";
+
+import { HeroSection } from "~/components/content/sections/hero";
+import { SkillsSection } from "~/components/content/sections/skill";
+import { ProjectSection } from "~/components/content/sections/project";
+
 // TODO: Заполнить
 useSeoMeta({
     title: "Евгений Полозов | Fullstack Developer | Портфолио",

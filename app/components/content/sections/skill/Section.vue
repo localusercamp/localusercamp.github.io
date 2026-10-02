@@ -1,104 +1,45 @@
 <template>
-    <ContentSection id="skills">
-        <div
+    <SectionWrapper
+        id="skills"
+        :inner-class="[
+            'py-20',
+        ]"
+    >
+        <SectionHeader
+            :title="v('skills_title')"
+            :subtitle="v('skills_subtitle')"
+            :description="v('skills_description')"
+        />
+
+        <ul
             :class="[
-                'py-20',
+                'mt-10',
+                'grid grid-cols-5 gap-6',
             ]"
         >
-            <div>
-                <p
-                    :class="[
-                        'font-medium',
-                        'text-primary-500',
-                    ]"
-                    v-text="v('skills_pretitle')"
-                />
-
-                <h2
-                    :class="[
-                        'mt-2',
-                        'font-bold',
-                        'text-9 leading-10',
-                    ]"
-                    v-text="v('skills_title')"
-                />
-
-                <p
-                    :class="[
-                        'mt-3',
-                        'text-text-ghosty',
-                        'text-3.5 leading-5',
-                    ]"
-                    v-text="v('skills_subtitle')"
-                />
-            </div>
-
-            <ul
-                :class="[
-                    'mt-10',
-                    'grid grid-cols-5 gap-6',
-                ]"
+            <li
+                v-for="(skill, index) of skills"
+                :key="skill.title"
+                :class="skill.class"
             >
-                <li
-                    v-for="(skill, index) of skills"
-                    :key="skill.title"
-                    :class="[
-                        skill.class,
-                        'relative isolate overflow-hidden',
-                        'rounded-4 bg-surface-accent',
-                        'border border-border-neutral',
-                        'p-2',
-                        'flex flex-row items-center justify-start gap-4',
-                    ]"
-                >
-                    <div
-                        :class="[
-                            'ambient-background',
-                            'pointer-events-none select-none',
-                            'absolute -top-10 -right-20 -z-1 ',
-                            'w-full aspect-square',
-                            'bg-linear-to-l from-primary-500/40 to-primary-500/0',
-                        ]"
-                        :style="ambients[index%10]"
-                    />
-
-                    <ui-img
-                        v-if="typeof skill.icon=== 'string'"
-                        :src="skill.icon"
-                        :alt="skill.title"
-                        :class="[
-                            'size-12 ',
-                        ]"
-                    />
-
-                    <div>
-                        <h3
-                            :class="[
-                                'font-medium',
-                                'text-4 leading-5.5',
-                                'text-primary-500',
-                            ]"
-                            v-text="skill.title"
-                        />
-
-                        <p
-                            :class="[
-                                'mt-0.5',
-                                'text-3.5 leading-5',
-                                'text-text-ghosty',
-                            ]"
-                            v-text="skill.subtitle"
-                        />
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </ContentSection>
+                <Skill
+                    :icon="skill.icon"
+                    :title="skill.title"
+                    :subtitle="skill.subtitle"
+                    :ambient-background-style="ambients[index]!"
+                />
+            </li>
+        </ul>
+    </SectionWrapper>
 </template>
 
 
 
 <script setup lang="ts">
+import { SectionWrapper, SectionHeader } from "~/components/content/primitives";
+
+import Skill from "./Skill.vue";
+
 const { v } = useVocabulary();
 
 const skills = [
@@ -120,8 +61,8 @@ const skills = [
     { title: "MySQL",       subtitle: "2 года",  icon: "/media/icons/skills/mysql.svg",       class: "" },
     { title: "Redis",       subtitle: "2 года",  icon: "/media/icons/skills/redis.svg",       class: "" },
     { title: "Git",         subtitle: "6+ лет",  icon: "/media/icons/skills/git.svg",         class: "col-start-1" },
-    { title: "GitHub",      subtitle: "6+ лет",  icon: "/media/icons/skills/github.svg",      class: "" },
     { title: "GitLab",      subtitle: "5+ лет",  icon: "/media/icons/skills/gitlab.svg",      class: "" },
+    { title: "GitHub",      subtitle: "6+ лет",  icon: "/media/icons/skills/github.svg",      class: "" },
 ];
 
 const ambients = [
@@ -135,21 +76,16 @@ const ambients = [
     "--step-1: rotate(30deg) translate3d(-26px, -13px, 0); --step-2: rotate(40deg) translate3d(26px, 13px, 0); --step-3: rotate(35deg) translate3d(0px, -9px, 0); --speed: 6.5s;",
     "--step-1: rotate(38deg) translate3d(0px, 0px, 0); --step-2: rotate(44deg) translate3d(22px, -13px, 0); --step-3: rotate(26deg) translate3d(-22px, 11px, 0); --speed: 3.9s;",
     "--step-1: rotate(32deg) translate3d(-16px, 8px, 0); --step-2: rotate(38deg) translate3d(20px, -8px, 0); --step-3: rotate(35deg) translate3d(-10px, 0px, 0); --speed: 3.2s;",
+    "--step-1: rotate(33deg) translate3d(0px, 0px, 0); --step-2: rotate(39deg) translate3d(-25px, -12px, 0); --step-3: rotate(27deg) translate3d(21px, 6px, 0); --speed: 5.2s;",
+    "--step-1: rotate(37deg) translate3d(18px, -10px, 0); --step-2: rotate(28deg) translate3d(-22px, 14px, 0); --step-3: rotate(34deg) translate3d(0px, 4px, 0); --speed: 4.0s;",
+    "--step-1: rotate(31deg) translate3d(-15px, 9px, 0); --step-2: rotate(43deg) translate3d(27px, -5px, 0); --step-3: rotate(36deg) translate3d(-12px, -8px, 0); --speed: 5.8s;",
+    "--step-1: rotate(42deg) translate3d(0px, -6px, 0); --step-2: rotate(32deg) translate3d(-29px, 10px, 0); --step-3: rotate(38deg) translate3d(23px, -11px, 0); --speed: 4.6s;",
+    "--step-1: rotate(28deg) translate3d(24px, 12px, 0); --step-2: rotate(36deg) translate3d(-20px, -14px, 0); --step-3: rotate(40deg) translate3d(0px, 0px, 0); --speed: 3.5s;",
+    "--step-1: rotate(36deg) translate3d(-10px, -5px, 0); --step-2: rotate(42deg) translate3d(25px, 11px, 0); --step-3: rotate(30deg) translate3d(-24px, -6px, 0); --speed: 6.2s;",
+    "--step-1: rotate(34deg) translate3d(0px, 0px, 0); --step-2: rotate(26deg) translate3d(28px, -15px, 0); --step-3: rotate(39deg) translate3d(-19px, 13px, 0); --speed: 4.9s;",
+    "--step-1: rotate(41deg) translate3d(-26px, 8px, 0); --step-2: rotate(35deg) translate3d(16px, -12px, 0); --step-3: rotate(29deg) translate3d(12px, 9px, 0); --speed: 3.7s;",
+    "--step-1: rotate(30deg) translate3d(0px, -10px, 0); --step-2: rotate(38deg) translate3d(-23px, 15px, 0); --step-3: rotate(33deg) translate3d(26px, -4px, 0); --speed: 5.4s;",
+    "--step-1: rotate(35deg) translate3d(21px, -7px, 0); --step-2: rotate(44deg) translate3d(-17px, -9px, 0); --step-3: rotate(28deg) translate3d(0px, 12px, 0); --speed: 6.8s;",
+
 ];
 </script>
-
-
-
-<style scoped>
-.ambient-background {
-    animation: ambient var(--speed) ease-in-out infinite;
-    will-change: transform;
-}
-
-@keyframes ambient {
-    0%   { transform: var(--step-1); }
-    33%  { transform: var(--step-2); }
-    66%  { transform: var(--step-3); }
-    100% { transform: var(--step-1); }
-}
-</style>

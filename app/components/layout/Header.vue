@@ -1,7 +1,7 @@
 <template>
     <header
         :class="[
-            'sticky top-0',
+            'sticky top-0 z-100',
             'border-b border-border-neutral',
             'bg-surface',
             'py-6 px-8',

@@ -10,6 +10,15 @@ export default defineNuxtConfig({
 
     ssr: true,
 
+    components: [
+        {
+            path: "~/components/ui",
+            prefix: "ui",
+            pathPrefix: false,
+            extensions: [".vue"],
+        },
+    ],
+
     devtools: {
         enabled: true,
     },

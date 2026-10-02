@@ -1,5 +1,5 @@
 <template>
-    <ContentSection id="about">
+    <SectionWrapper id="about">
         <div
             :class="[
                 'py-20',
@@ -127,12 +127,14 @@
                 </ul>
             </div>
         </div>
-    </ContentSection>
+    </SectionWrapper>
 </template>
 
 
 
 <script setup lang="ts">
+import { SectionWrapper } from "~/components/content/primitives";
+
 const { v, vs } = useVocabulary();
 
 const datalist = computed(() => [
