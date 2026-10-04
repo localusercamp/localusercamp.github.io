@@ -1,16 +1,19 @@
 <template>
     <transition
         enter-active-class="transition-all duration-1000"
-        enter-from-class="translate-x-(--initial-x) translate-y-(--initial-y)"
-        enter-to-class=""
+        enter-from-class="enter-from"
+        enter-to-class="enter-to"
         leave-active-class="transition-all duration-1000"
-        leave-from-class=""
-        leave-to-class=""
+        leave-from-class="leave-from"
+        leave-to-class="leave-to"
+        @after-enter="afterEnter = true"
+        @before-leave="afterEnter = false"
     >
         <div
             v-if="$opened"
             :class="[
-                $opened ? 'enter-to' : '',
+                afterEnter ? 'enter-to' : '',
+                // $opened ? 'enter-to' : '',
                 // '_animate',
                 // $opened ? '' : '',
                 'absolute top-0 left-0',
@@ -54,6 +57,9 @@ const {
 
 const $opened = defineModel<boolean>("opened", { required: false, default: false });
 
+const afterEnter = ref<boolean>(false);
+
+
 const { width, height, top } = useWindowBox();
 
 const initialX = computed<string>(() => `${cardBBox.left}px`);
@@ -66,8 +72,14 @@ const targetY = computed<string>(() => `${(height.value / 2) - (cardBBox.height 
 
 
 <style scoped>
-.enter-to {
+.enter-from {
+    @apply translate-x-(--initial-x) translate-y-(--initial-y);
+}
+.enter-to, .leave-from {
     @apply translate-x-(--target-x) translate-y-(--target-y);
+}
+.leave-to {
+    @apply translate-x-(--initial-x) translate-y-(--initial-y);
 }
 
 ._animate {
