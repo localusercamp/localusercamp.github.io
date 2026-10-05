@@ -22,6 +22,9 @@ const ru = {
     projects_title: "Проекты",
     projects_subtitle: "Что я делал",
     projects_description: "Проекты для бизнеса и государства, в которых я принимал участие.",
+    contacts_title: "Контакты",
+    contacts_subtitle: "Как связаться",
+    contacts_description: "Пишите по любым вопросам, отвечу в течении дня.",
 } as const;
 
 const en = {

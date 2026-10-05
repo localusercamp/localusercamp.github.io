@@ -39,7 +39,7 @@
 <script setup lang="ts">
 import ProjectCard from "./ProjectCard.vue";
 
-import type { CardBBox } from "./types";
+import type { CardBBox } from "./types.ts";
 
 const {
     cardBBox,

@@ -9,6 +9,10 @@
         <SectionDivider />
 
         <ProjectSection />
+
+        <SectionDivider />
+
+        <ContactsSection />
     </div>
 </template>
 
@@ -18,8 +22,10 @@
 import { SectionDivider } from "~/components/content/primitives";
 
 import { HeroSection } from "~/components/content/sections/hero";
-import { SkillsSection } from "~/components/content/sections/skill";
-import { ProjectSection } from "~/components/content/sections/project";
+import { SkillsSection } from "~/components/content/sections/skills";
+import { ProjectSection } from "~/components/content/sections/projects";
+import { ContactsSection } from "~/components/content/sections/contacts";
+
 
 // TODO: Заполнить
 useSeoMeta({
