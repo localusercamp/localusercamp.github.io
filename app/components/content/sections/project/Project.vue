@@ -44,17 +44,9 @@ const {
 const {
     state: opened,
     on: openView,
-    // off: closeView,
 } = useBooleanState();
 
-// const cardPosition = ref<CardPosition>({ top: 0, left: 0 });
-
 function handleCardClick(): void {
-    // cardPosition.value = {
-    //     top: top.value,
-    //     left: left.value,
-    // };
-
     openView();
 }
 
