@@ -278,6 +278,9 @@ import ProjectView from "./ProjectView.vue";
 
 ### Стили и Tailwind
 
+- Правило выбора: если разметку спокойно описывают утилиты Tailwind (лейаут, отступы, размеры,
+  цвета, состояния) — делаем на Tailwind. Как только нужны CSS-переменные, `@keyframes`,
+  сложная иерархия/состояния или кастомные значения — выносим в `<style scoped>` обычным CSS.
 - Использовать токены из `app/assets/css/main.css`, а не произвольные значения.
 - Масштабы: `text-<N>`, `leading-<N>`, `rounded-<N>` (например `text-4`, `leading-6.5`,
   `rounded-4`).
@@ -302,6 +305,68 @@ import ProjectView from "./ProjectView.vue";
   - `vs(["first_name", "last_name"])` — склейка через пробел.
 - Ключи добавлять в `app/composables/useVocabulary.ts` (`ru` и `en`), тип `VocabularyKey`
   выводится автоматически.
+
+## Секция «Проекты»: инварианты ProjectView
+
+Файлы: `app/components/content/sections/projects/`. Ниже — неочевидные решения, которые уже
+ломали анимацию. **Не откатывать.**
+
+### Состав и данные
+- Весь контент идёт пропсами: `Section.vue` (`projects`) → `Project.vue` →
+  `ProjectCard.vue` / `ProjectView.vue` → `ProjectRole`, `ProjectTags`,
+  `ProjectViewGallery`/`ProjectViewLinks`/`ProjectViewHighlights` → `ProjectViewList`.
+  Хардкода в разметке нет.
+- `ProjectRole` — не секция, а часть «шапки»: показывается и в карточке, и во вьюшке
+  (строка `role · period`). Ниже — `.project-view__swap`: в одной ячейке кросс-фейдом
+  меняются `summary` (в карточке/при закрытии) и теги (в открытой вьюшке).
+- Просмотрщик изображений **один на секцию**: живёт в `Section.vue`, а галереи дёргают его
+  через provide/inject (`imageViewer.ts`, `imageViewerKey`). Не создавать просмотрщик внутри
+  каждой вьюшки.
+
+### Позиционирование и стек
+- Оверлей: `<Teleport to="body">` + `position: absolute` и **документные** координаты
+  (`cardBBox.top + scrollY`). Не переводить на `fixed` — иначе на закрытии модалка «залипает»
+  на месте экрана, а не скроллится с контентом.
+- Сетка `<ul>` — `relative z-0` (stacking-контекст). Нужен, чтобы свечение карточки
+  (`.project-card::before`, `z-index: -1`) было позади всех карточек, а не поверх соседней.
+- Тень ховера — только на `.project-card::before`; box-shadow на саму карточку не вешать.
+
+### Ключевой подвох Vue
+Vue **не перепатчивает классы у уходящего элемента**, поэтому `.is-open` (постоянный класс
+раскрытого состояния) остаётся на элементе всю анимацию закрытия. Значит все свойства,
+заданные в `.is-open`/`.view-enter-to` и обязанные вернуться в компакт, надо явно
+продублировать в `.view-leave-to` (позиция, `padding`, `opacity`, шрифты, задержки).
+На снятие класса полагаться нельзя. Этот баг всплывал уже несколько раз.
+
+### Геометрия (бесшовное открытие)
+Компактное состояние оверлея обязано совпадать с карточкой. Сейчас: карточка `p-3`
+(0.75rem), `gap-3 md:gap-4`, картинка `size-40`/`rounded-3`; обложка `top/left 0.75rem`;
+тело — десктоп `top 0.75rem`, `left 11.75rem`, `width calc(100% - 12.5rem)`; мобилка
+`top 11.5rem`, `left 0.75rem`, `width calc(100% - 1.5rem)`. При смене паддинга/gap/размера
+картинки эти значения править синхронно.
+
+### Тайминги (текущие — не менять без причины)
+- `--view-duration: 1400ms`, `--view-ease: cubic-bezier(0.16, 1, 0.3, 1)` (обе стороны).
+- Обложка: база `600ms ease 600ms`; открытие — `300ms`, `delay 0`; закрытие —
+  `delay var(--view-cover-close-delay)` (250ms) → картинка проявляется после ухода текста.
+- Кнопка закрытия: `--view-close-duration: 200ms`, `--view-close-delay: 100ms`.
+- Секции: только `opacity` (без анимации высоты). Общий делэй `400ms`, шаг `120ms`
+  (`--section-index`), показ `400ms`, скрытие `150ms`.
+
+### Разное
+- Тело в раскрытом виде: `top/left 0`, `width 100%`, `padding: var(--view-padding)` (2rem) —
+  чтобы галерея могла выйти за паддинг; `padding` включён в transition.
+- Галерея full-bleed: `margin-inline: calc(var(--view-padding) * -1)`,
+  `padding-inline: var(--view-padding)` и **обязательно** `scroll-padding-inline: var(--view-padding)`
+  (иначе scroll-snap прилипает к краю).
+- На закрытии тело: `.view-leave-active .project-view__body { max-height: none; overflow: hidden }`
+  (иначе скроллбары) и `.view-leave-to .project-view__body { padding: 0 }` (иначе лишний инсет
+  из устаревшего `.is-open`).
+- Отступы секций — Tailwind-классом `m*` на корне секции (`mt-6`), а не в `.project-view__section`.
+- На смену темы карточка должна следовать глобальному `transition-colors` (300ms): базовый
+  `transition` на `.project-card` не задавать, 700ms-переход границы — только на `:hover`.
+- У модалки сейчас нет тени (`box-shadow` убран). Слой с размытыми блобами-амбиентом тоже
+  убирали — он расширял область прокрутки документа. Не возвращать без явной причины.
 
 ## Чего не делать
 

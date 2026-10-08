@@ -69,12 +69,15 @@
                         'flex flex-row items-center justify-start gap-3',
                     ]"
                 >
-                    <ui-button
-                        variant="solid"
-                    >
-                        <icon-mail class="size-5 -ml-2" />
-                        Связаться
-                    </ui-button>
+                    <a :href="`mailto:${v('contact_email_address')}`">
+                        <ui-button
+                            variant="solid"
+                            inert
+                        >
+                            <icon-mail class="size-5 -ml-2" />
+                            Связаться
+                        </ui-button>
+                    </a>
 
                     <ui-button
                         variant="outlined"

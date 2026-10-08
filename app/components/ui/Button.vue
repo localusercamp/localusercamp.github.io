@@ -1,10 +1,12 @@
 <template>
-    <button
-        type="button"
+    <component
+        :is="inert ? 'div' : 'button'"
+        :type="inert ? undefined : 'button'"
         :class="classes({ variant })"
+        @click="handleClick()"
     >
         <slot />
-    </button>
+    </component>
 </template>
 
 
@@ -21,8 +23,14 @@ type Variant = typeof Variant[keyof typeof Variant];
 
 const {
     variant,
+    inert,
 } = defineProps<{
     variant: Variant;
+    inert?: boolean;
+}>();
+
+const emit = defineEmits<{
+    click: [];
 }>();
 
 
@@ -50,4 +58,14 @@ const classes = tv({
         },
     },
 });
+
+
+
+function handleClick(): void {
+    if (inert) {
+        return;
+    }
+
+    emit("click");
+}
 </script>

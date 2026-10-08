@@ -25,6 +25,12 @@ const ru = {
     contacts_title: "Контакты",
     contacts_subtitle: "Как связаться",
     contacts_description: "Пишите по любым вопросам, отвечу в течении дня.",
+    contact_email: "Email",
+    contact_email_address: "email@example.com",
+    contact_telegram: "Telegram",
+    contact_telegram_username: "localusercamp",
+    contact_github: "GitHub",
+    contact_github_url: "https://github.com/localusercamp",
 } as const;
 
 const en = {

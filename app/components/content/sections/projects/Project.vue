@@ -4,8 +4,10 @@
             ref="project-card"
             :image="image"
             :title="title"
-            :description="description"
-            :class="{ 'opacity-0': opened }"
+            :role="role"
+            :period="period"
+            :summary="summary"
+            :class="{ 'opacity-0': isCardHidden }"
             @click:card="handleCardClick()"
         />
 
@@ -15,6 +17,15 @@
             :image="image"
             :title="title"
             :description="description"
+            :role="role"
+            :period="period"
+            :summary="summary"
+            :tags="tags"
+            :links="links"
+            :gallery="gallery"
+            :tasks="tasks"
+            :results="results"
+            @close:view="handleViewClosed()"
         />
     </article>
 </template>
@@ -33,10 +44,29 @@ const {
     image,
     title,
     description,
+    role,
+    period,
+    summary,
+    tags,
+    links,
+    gallery,
+    tasks,
+    results,
 } = defineProps<{
     image: string;
     title: string;
     description: string;
+    role: string;
+    period: string;
+    summary: string;
+    tags: string[];
+    links: {
+        label: string;
+        href: string;
+    }[];
+    gallery: string[];
+    tasks: string[];
+    results: string[];
 }>();
 
 
@@ -46,8 +76,15 @@ const {
     on: openView,
 } = useBooleanState();
 
+const isCardHidden = ref<boolean>(false);
+
 function handleCardClick(): void {
+    isCardHidden.value = true;
     openView();
+}
+
+function handleViewClosed(): void {
+    isCardHidden.value = false;
 }
 
 

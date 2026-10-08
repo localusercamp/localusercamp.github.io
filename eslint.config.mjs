@@ -3,6 +3,14 @@ import withNuxt from "./.nuxt/eslint.config.mjs";
 
 export default withNuxt(
     {
+        ignores: [
+            "docs/**",
+            "dist/**",
+            ".output/**",
+            ".kilo/**",
+        ],
+    },
+    {
         rules: {
             "@stylistic/semi": ["error", "always"],
             "@stylistic/comma-dangle": ["error", "always-multiline"],

@@ -4,11 +4,11 @@
 
         <SectionDivider />
 
-        <SkillsSection />
+        <ProjectSection />
 
         <SectionDivider />
 
-        <ProjectSection />
+        <SkillsSection />
 
         <SectionDivider />
 

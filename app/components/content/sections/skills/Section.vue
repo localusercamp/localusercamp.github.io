@@ -76,7 +76,7 @@ const ambients = [
     "--step-1: rotate(30deg) translate3d(-26px, -13px, 0); --step-2: rotate(40deg) translate3d(26px, 13px, 0); --step-3: rotate(35deg) translate3d(0px, -9px, 0); --speed: 6.5s;",
     "--step-1: rotate(38deg) translate3d(0px, 0px, 0); --step-2: rotate(44deg) translate3d(22px, -13px, 0); --step-3: rotate(26deg) translate3d(-22px, 11px, 0); --speed: 3.9s;",
     "--step-1: rotate(32deg) translate3d(-16px, 8px, 0); --step-2: rotate(38deg) translate3d(20px, -8px, 0); --step-3: rotate(35deg) translate3d(-10px, 0px, 0); --speed: 3.2s;",
-    "--step-1: rotate(33deg) translate3d(0px, 0px, 0); --step-2: rotate(39deg) translate3d(-25px, -12px, 0); --step-3: rotate(27deg) translate3d(21px, 6px, 0); --speed: 5.2s;",
+    "--step-1: rotate(33deg) translate3d(0px, 0px, 0); --step-2: rotate(33deg) translate3d(-15px, -12px, 0); --step-3: rotate(30deg) translate3d(21px, 6px, 0); --speed: 5.2s;",
     "--step-1: rotate(37deg) translate3d(18px, -10px, 0); --step-2: rotate(28deg) translate3d(-22px, 14px, 0); --step-3: rotate(34deg) translate3d(0px, 4px, 0); --speed: 4.0s;",
     "--step-1: rotate(31deg) translate3d(-15px, 9px, 0); --step-2: rotate(43deg) translate3d(27px, -5px, 0); --step-3: rotate(36deg) translate3d(-12px, -8px, 0); --speed: 5.8s;",
     "--step-1: rotate(42deg) translate3d(0px, -6px, 0); --step-2: rotate(32deg) translate3d(-29px, 10px, 0); --step-3: rotate(38deg) translate3d(23px, -11px, 0); --speed: 4.6s;",
@@ -86,6 +86,5 @@ const ambients = [
     "--step-1: rotate(41deg) translate3d(-26px, 8px, 0); --step-2: rotate(35deg) translate3d(16px, -12px, 0); --step-3: rotate(29deg) translate3d(12px, 9px, 0); --speed: 3.7s;",
     "--step-1: rotate(30deg) translate3d(0px, -10px, 0); --step-2: rotate(38deg) translate3d(-23px, 15px, 0); --step-3: rotate(33deg) translate3d(26px, -4px, 0); --speed: 5.4s;",
     "--step-1: rotate(35deg) translate3d(21px, -7px, 0); --step-2: rotate(44deg) translate3d(-17px, -9px, 0); --step-3: rotate(28deg) translate3d(0px, 12px, 0); --speed: 6.8s;",
-
 ];
 </script>
