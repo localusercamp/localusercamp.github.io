@@ -2,7 +2,7 @@
     <SectionWrapper
         id="skills"
         :inner-class="[
-            'py-20',
+            'py-8 md:py-20',
         ]"
     >
         <SectionHeader
@@ -13,8 +13,9 @@
 
         <ul
             :class="[
-                'mt-10',
-                'grid grid-cols-5 gap-6',
+                'mt-8 md:mt-10',
+                'grid grid-cols-2 gap-3',
+                'md:grid-cols-5 md:gap-6',
             ]"
         >
             <li
@@ -43,7 +44,7 @@ import Skill from "./Skill.vue";
 const { v } = useVocabulary();
 
 const skills = [
-    { title: "JavaScript",  subtitle: "6+ лет",  icon: "/media/icons/skills/javascript.svg",  class: "col-start-1" },
+    { title: "JavaScript",  subtitle: "6+ лет",  icon: "/media/icons/skills/javascript.svg",  class: "md:col-start-1" },
     { title: "TypeScript",  subtitle: "4+ года", icon: "/media/icons/skills/typescript.svg",  class: "" },
     { title: "Vue",         subtitle: "6+ лет",  icon: "/media/icons/skills/vue.svg",         class: "" },
     { title: "Nuxt",        subtitle: "6+ лет",  icon: "/media/icons/skills/nuxt.svg",        class: "" },
@@ -52,15 +53,15 @@ const skills = [
     { title: "CSS",         subtitle: "6+ лет",  icon: "/media/icons/skills/css.svg",         class: "" },
     { title: "SASS/SCSS",   subtitle: "3 года",  icon: "/media/icons/skills/sass.svg",        class: "" },
     { title: "TailwindCSS", subtitle: "4+ года", icon: "/media/icons/skills/tailwindcss.svg", class: "" },
-    { title: "PHP",         subtitle: "6+ лет",  icon: "/media/icons/skills/php.svg",         class: "col-start-1" },
+    { title: "PHP",         subtitle: "6+ лет",  icon: "/media/icons/skills/php.svg",         class: "md:col-start-1" },
     { title: "Laravel",     subtitle: "6+ лет",  icon: "/media/icons/skills/laravel.svg",     class: "" },
     { title: "Pest",        subtitle: "2+ года", icon: "/media/icons/skills/pest.svg",        class: "[&>img]:h-8 [&>img]:mt-1" },
     { title: "Docker",      subtitle: "3+ года", icon: "/media/icons/skills/docker.svg",      class: "" },
-    { title: "SQL",         subtitle: "6+ лет",  icon: "/media/icons/skills/sql.svg",         class: "col-start-1" },
+    { title: "SQL",         subtitle: "6+ лет",  icon: "/media/icons/skills/sql.svg",         class: "md:col-start-1" },
     { title: "PostgreSQL",  subtitle: "4+ года", icon: "/media/icons/skills/postgresql.svg",  class: "" },
     { title: "MySQL",       subtitle: "2 года",  icon: "/media/icons/skills/mysql.svg",       class: "" },
     { title: "Redis",       subtitle: "2 года",  icon: "/media/icons/skills/redis.svg",       class: "" },
-    { title: "Git",         subtitle: "6+ лет",  icon: "/media/icons/skills/git.svg",         class: "col-start-1" },
+    { title: "Git",         subtitle: "6+ лет",  icon: "/media/icons/skills/git.svg",         class: "md:col-start-1" },
     { title: "GitLab",      subtitle: "5+ лет",  icon: "/media/icons/skills/gitlab.svg",      class: "" },
     { title: "GitHub",      subtitle: "6+ лет",  icon: "/media/icons/skills/github.svg",      class: "" },
 ];

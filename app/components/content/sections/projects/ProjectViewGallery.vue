@@ -12,7 +12,8 @@
                 :key="imageIndex"
                 type="button"
                 :class="[
-                    'h-40 w-64 shrink-0',
+                    'h-32 w-52 shrink-0',
+                    'md:h-40 md:w-64',
                     'overflow-hidden rounded-4',
                     'snap-start',
                     'transition-transform duration-300',

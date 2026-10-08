@@ -12,7 +12,8 @@
             :class="[
                 'mt-2',
                 'font-bold',
-                'text-9 leading-10',
+                'text-7 leading-8',
+                'md:text-9 md:leading-10',
             ]"
             v-text="subtitle"
         />

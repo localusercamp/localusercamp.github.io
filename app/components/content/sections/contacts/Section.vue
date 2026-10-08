@@ -2,7 +2,7 @@
     <SectionWrapper
         id="contacts"
         :inner-class="[
-            'py-20',
+            'py-8 md:py-20',
         ]"
     >
         <SectionHeader
@@ -13,7 +13,7 @@
 
         <div
             :class="[
-                'mt-10',
+                'mt-8 md:mt-10',
                 'flex flex-row flex-wrap items-center justify-start gap-3',
             ]"
         >

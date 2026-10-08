@@ -14,13 +14,19 @@
         ]"
         @click="handleClick()"
     >
-        <div class="shrink-0">
+        <div
+            :class="[
+                'shrink-0',
+                'w-full md:w-auto',
+            ]"
+        >
             <ui-img
                 :src="image"
                 :alt="title"
                 :class="[
                     'rounded-3',
-                    'size-40',
+                    'w-full aspect-video',
+                    'md:aspect-auto md:size-40',
                     'object-cover object-center',
                 ]"
             />

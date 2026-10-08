@@ -2,7 +2,7 @@
     <section
         :class="[
             'w-full',
-            'px-4 sm:px-10',
+            'px-4 md:px-10',
             'flex flex-row items-start justify-center',
         ]"
     >

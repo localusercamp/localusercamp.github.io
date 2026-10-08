@@ -5,7 +5,8 @@
             'rounded-4 bg-surface-accent',
             'border border-border-neutral',
             'p-2',
-            'flex flex-row items-center justify-start gap-4',
+            'flex flex-row items-center justify-start gap-3',
+            'md:gap-4',
         ]"
     >
         <div
@@ -23,7 +24,8 @@
             :src="icon"
             :alt="title"
             :class="[
-                'size-12 ',
+                'size-10 ',
+                'md:size-12',
             ]"
         />
 
@@ -31,7 +33,8 @@
             <h3
                 :class="[
                     'font-medium',
-                    'text-4 leading-5.5',
+                    'text-3.5 leading-5',
+                    'md:text-4 md:leading-5.5',
                     'text-primary-500',
                 ]"
                 v-text="title"

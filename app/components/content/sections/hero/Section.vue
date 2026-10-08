@@ -2,13 +2,18 @@
     <SectionWrapper id="about">
         <div
             :class="[
-                'py-20',
-                'flex flex-col sm:flex-row',
+                'py-8 md:py-20',
+                'flex flex-col md:flex-row',
                 'items-start justify-stretch',
-                'gap-0 sm:gap-16',
+                'gap-8 md:gap-16',
             ]"
         >
-            <div class="relative shrink-0">
+            <div
+                :class="[
+                    'relative shrink-0',
+                    'hidden md:block',
+                ]"
+            >
                 <ui-img
                     src="/media/images/avatar.webp"
                     :alt="vs(['first_name', 'last_name'])"
@@ -46,7 +51,8 @@
                             'mt-2',
                             'block',
                             'font-bold',
-                            'text-12 leading-15 tracking-[-1.2px]',
+                            'text-10 leading-12 tracking-[-0.8px]',
+                            'md:text-12 md:leading-15 md:tracking-[-1.2px]',
                         ]"
                         v-text="vs(['first_name', 'last_name'])"
                     />
@@ -58,7 +64,8 @@
                         'text-text-ghosty',
                         'font-normal',
                         'text-4 leading-6.5',
-                        'whitespace-pre-wrap',
+                        'whitespace-normal',
+                        'md:whitespace-pre-wrap',
                     ]"
                     v-text="v('about_me')"
                 />
@@ -66,7 +73,7 @@
                 <div
                     :class="[
                         'mt-6',
-                        'flex flex-row items-center justify-start gap-3',
+                        'flex flex-row flex-wrap items-center justify-start gap-3',
                     ]"
                 >
                     <a :href="`mailto:${v('contact_email_address')}`">
@@ -91,13 +98,15 @@
                     :class="[
                         'mt-6',
                         'border-border-neutral',
+                        'hidden md:block',
                     ]"
                 >
 
                 <ul
                     :class="[
                         'mt-6',
-                        'flex flex-row items-start justify-start gap-8',
+                        'flex flex-row items-start justify-start gap-6',
+                        'md:gap-8',
                     ]"
                 >
                     <li

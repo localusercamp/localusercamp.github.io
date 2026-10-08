@@ -11,22 +11,42 @@
             @click:card="handleCardClick()"
         />
 
-        <ProjectView
-            v-model:opened="opened"
-            :card-b-box="{ width, height, top, left }"
-            :image="image"
-            :title="title"
-            :description="description"
-            :role="role"
-            :period="period"
-            :summary="summary"
-            :tags="tags"
-            :links="links"
-            :gallery="gallery"
-            :tasks="tasks"
-            :results="results"
-            @close:view="handleViewClosed()"
-        />
+        <client-only>
+            <ProjectView
+                v-if="!isMobile"
+                v-model:opened="opened"
+                :card-b-box="{ width, height, top, left }"
+                :image="image"
+                :title="title"
+                :description="description"
+                :role="role"
+                :period="period"
+                :summary="summary"
+                :tags="tags"
+                :links="links"
+                :gallery="gallery"
+                :tasks="tasks"
+                :results="results"
+                @close:view="handleViewClosed()"
+            />
+
+            <ProjectDrawer
+                v-else
+                v-model:opened="opened"
+                :image="image"
+                :title="title"
+                :description="description"
+                :role="role"
+                :period="period"
+                :summary="summary"
+                :tags="tags"
+                :links="links"
+                :gallery="gallery"
+                :tasks="tasks"
+                :results="results"
+                @close:view="handleViewClosed()"
+            />
+        </client-only>
     </article>
 </template>
 
@@ -35,9 +55,10 @@
 <script setup lang="ts">
 import type { ComponentPublicInstance } from "vue";
 
-import { useElementBounding } from "@vueuse/core";
+import { useElementBounding, useMediaQuery } from "@vueuse/core";
 
 import ProjectCard from "./ProjectCard.vue";
+import ProjectDrawer from "./ProjectDrawer.vue";
 import ProjectView from "./ProjectView.vue";
 
 const {
@@ -78,8 +99,11 @@ const {
 
 const isCardHidden = ref<boolean>(false);
 
+const isMobile = useMediaQuery("(width < 69rem)");
+
+
 function handleCardClick(): void {
-    isCardHidden.value = true;
+    isCardHidden.value = !isMobile.value;
     openView();
 }
 

@@ -326,20 +326,6 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
     padding: 0;
 }
 
-@media (width < 64rem) {
-    .project-view__body {
-        top: 11.5rem;
-        left: 0.75rem;
-        width: calc(100% - 1.5rem);
-    }
-
-    .view-leave-to .project-view__body {
-        top: 11.5rem;
-        left: 0.75rem;
-        width: calc(100% - 1.5rem);
-    }
-}
-
 .project-view__title {
     font-size: 1.125rem;
     line-height: 1.5rem;

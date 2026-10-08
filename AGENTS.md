@@ -18,6 +18,8 @@
 - **TypeScript** `~6.0` в strict-режиме, проверка типов включена в сборку.
 - **Tailwind CSS** `~4.3` через Vite-плагин `@tailwindcss/vite` (директивы `@theme`, `@apply`).
 - **tailwind-variants** (`tv`, импорт из `tailwind-variants/lite`) для вариантов классов.
+- **reka-ui** `~2.11` — unstyled-примитивы (Dialog, Drawer, Popover, Tooltip, Select и др.).
+  Используем как конструктор интерактивных компонентов (см. «UI-примитивы: reka-ui»).
 - **@vueuse/core** для реактивных утилит (`useWindowSize`, `useWindowScroll`, `useElementBounding`).
 - **@nuxtjs/color-mode** — тёмная/светлая тема.
 - **nuxt-lucide-icons** — иконки с префиксом `Icon` (в шаблоне `<icon-moon />`).
@@ -79,6 +81,37 @@ components: [{ path: "~/components/ui", prefix: "ui", pathPrefix: false, extensi
   `<ui-button>`, `<ui-img>`, `<ui-dark-mode-switch>`.
 - **Все остальные** компоненты (layout, primitives, sections) **нужно импортировать
   явно** из их barrel-файла `index.ts`. Авто-регистрации для них нет.
+
+## UI-примитивы: reka-ui
+
+Интерактивные компоненты (модалки, дроверы, поповеры, тултипы, селекты, аккордеоны,
+табы, свитчи и т.п.) **не пишем с нуля**. Сначала идём в **reka-ui** — это unstyled
+конструктор доступных примитивов, из которого собираем компонент как из готовых блоков,
+а затем оформляем нашими Tailwind-токенами.
+
+Порядок работы над любым новым интерактивным компонентом:
+
+1. Найти ближайший примитив в reka-ui (по смыслу, а не по названию компонента).
+2. Прочитать доку именно этого примитива в LLM-формате:
+   - индекс всех страниц: `https://reka-ui.com/llms.txt`;
+   - страница в markdown: `https://reka-ui.com/docs/components/<name>.md`;
+   - исходники и пропсы: `node_modules/reka-ui/src/<Component>/`.
+3. Собрать компонент из предложенных частей (`Root` / `Trigger` / `Portal` / `Overlay` /
+   `Content` / …), не изобретая поведение вручную.
+4. Обернуть в локальный компонент с нашим API и стилями (Tailwind-токены, `:class`,
+   scoped-анимации через `data-state`).
+
+Правила:
+
+- reka-ui даёт поведение и доступность (фокус, блокировка скролла, клавиатура, ARIA),
+  но **не стили**. Внешний вид и анимации наши: через `data-state`, `@keyframes` и
+  CSS-переменные примитива, а не через самодельную реактивность.
+- Обёртки reka-ui кладём в `app/components/ui/` (авто-регистрация `<ui-*>`), если
+  компонент общий, либо рядом с секцией, если он локальный.
+- reka-ui не тащим повсюду: статичную разметку и лейаут пишем на Tailwind, как раньше.
+  reka-ui — только там, где нужен готовый интерактив.
+- Проверяй статус в доке: часть компонентов (например, `Drawer`) помечены **Alpha**,
+  их API может меняться.
 
 ## Стиль кода
 
@@ -312,8 +345,12 @@ import ProjectView from "./ProjectView.vue";
 ломали анимацию. **Не откатывать.**
 
 ### Состав и данные
+- У вьюшки проекта **две реализации**, `Project.vue` выбирает по
+  `useMediaQuery("(width < 69rem)")` внутри `<client-only>` (ниже 69rem — мобилка):
+  - `ProjectView.vue` — десктопный морфинг из карточки (документные координаты);
+  - `ProjectDrawer.vue` — мобильный bottom-sheet на reka-ui `Drawer` (см. ниже).
 - Весь контент идёт пропсами: `Section.vue` (`projects`) → `Project.vue` →
-  `ProjectCard.vue` / `ProjectView.vue` → `ProjectRole`, `ProjectTags`,
+  `ProjectCard.vue` / `ProjectView.vue` / `ProjectDrawer.vue` → `ProjectRole`, `ProjectTags`,
   `ProjectViewGallery`/`ProjectViewLinks`/`ProjectViewHighlights` → `ProjectViewList`.
   Хардкода в разметке нет.
 - `ProjectRole` — не секция, а часть «шапки»: показывается и в карточке, и во вьюшке
@@ -331,6 +368,20 @@ import ProjectView from "./ProjectView.vue";
   (`.project-card::before`, `z-index: -1`) было позади всех карточек, а не поверх соседней.
 - Тень ховера — только на `.project-card::before`; box-shadow на саму карточку не вешать.
 
+### Мобильный Drawer (reka-ui)
+- `ProjectDrawer.vue` собран из reka-ui `Drawer` (`Root`/`Portal`/`Overlay`/`Content`/
+  `Handle`/`Close`/`Title`), а не написан с нуля. Поведение (swipe-to-dismiss, блокировка
+  скролла, focus trap, Esc, safe-area) — от reka-ui.
+- `DrawerRoot` контролируемый: `:open="$opened"` + `@update:open` (пишем `$opened`, а на
+  закрытии шлём `close:view`, чтобы вернуть карточку).
+- В компоненте **нет `<style scoped>`** — только Tailwind. Драг за пальцем:
+  `translate-y-(--drawer-swipe-movement-y)` + `transition-transform` + `data-[swiping]:duration-0`.
+  Keyframes и анимации объявлены токенами в `main.css` (`@theme`, `--animate-drawer-*`) и
+  включаются через `data-[state=open|closed]:animate-drawer-*`.
+- Контент скроллится во внутреннем блоке (`overflow-y-auto`, `overscroll-contain`); reka-ui сам
+  различает скролл и dismiss по краю скролла.
+- `DrawerTitle` обязателен (a11y). Описание не рендерим → `:aria-describedby="undefined"`.
+
 ### Ключевой подвох Vue
 Vue **не перепатчивает классы у уходящего элемента**, поэтому `.is-open` (постоянный класс
 раскрытого состояния) остаётся на элементе всю анимацию закрытия. Значит все свойства,
@@ -338,12 +389,11 @@ Vue **не перепатчивает классы у уходящего эле�
 продублировать в `.view-leave-to` (позиция, `padding`, `opacity`, шрифты, задержки).
 На снятие класса полагаться нельзя. Этот баг всплывал уже несколько раз.
 
-### Геометрия (бесшовное открытие)
+### Геометрия (бесшовное открытие, только десктопный ProjectView)
 Компактное состояние оверлея обязано совпадать с карточкой. Сейчас: карточка `p-3`
 (0.75rem), `gap-3 md:gap-4`, картинка `size-40`/`rounded-3`; обложка `top/left 0.75rem`;
-тело — десктоп `top 0.75rem`, `left 11.75rem`, `width calc(100% - 12.5rem)`; мобилка
-`top 11.5rem`, `left 0.75rem`, `width calc(100% - 1.5rem)`. При смене паддинга/gap/размера
-картинки эти значения править синхронно.
+тело — `top 0.75rem`, `left 11.75rem`, `width calc(100% - 12.5rem)`. При смене
+паддинга/gap/размера картинки эти значения править синхронно.
 
 ### Тайминги (текущие — не менять без причины)
 - `--view-duration: 1400ms`, `--view-ease: cubic-bezier(0.16, 1, 0.3, 1)` (обе стороны).
@@ -373,6 +423,8 @@ Vue **не перепатчивает классы у уходящего эле�
 - Не редактировать сгенерированное: `docs/`, `.output/`, `.nuxt/`, `dist/`.
 - Не менять настройки форматирования (отступы, кавычки, точки с запятой) в угоду вкусу.
 - Не добавлять зависимости без явной необходимости.
+- Не писать сложные интерактивные компоненты с нуля, если в reka-ui есть подходящий
+  примитив — сначала собираем из reka-ui.
 - Не использовать `{{ }}` для текста, `interface Props` для `defineProps`, Options API.
 - Не импортировать Vue/Nuxt-автоимпорты.
 - Не коммитить `node_modules`, секреты и `.env`-файлы.

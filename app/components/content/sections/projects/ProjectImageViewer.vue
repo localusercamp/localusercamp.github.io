@@ -35,7 +35,7 @@
                             'flex flex-[0_0_100%]',
                             'snap-center',
                             'items-center justify-center',
-                            'p-20',
+                            'p-4 md:p-20',
                         ]"
                     >
                         <ui-img
@@ -54,8 +54,8 @@
                     v-if="currentIndex > 0"
                     type="button"
                     :class="[
-                        'absolute top-1/2 left-6',
-                        'flex size-12 -translate-y-1/2 items-center justify-center',
+                        'absolute top-1/2 left-2 md:left-6',
+                        'flex size-10 md:size-12 -translate-y-1/2 items-center justify-center',
                         'rounded-2 border border-border-neutral',
                         'bg-surface-accent/80',
                         'text-text-ghosty',
@@ -72,8 +72,8 @@
                     v-if="currentIndex < images.length - 1"
                     type="button"
                     :class="[
-                        'absolute top-1/2 right-6',
-                        'flex size-12 -translate-y-1/2 items-center justify-center',
+                        'absolute top-1/2 right-2 md:right-6',
+                        'flex size-10 md:size-12 -translate-y-1/2 items-center justify-center',
                         'rounded-2 border border-border-neutral',
                         'bg-surface-accent/80',
                         'text-text-ghosty',
@@ -89,7 +89,7 @@
                 <button
                     type="button"
                     :class="[
-                        'absolute top-6 right-6',
+                        'absolute top-4 right-4 md:top-6 md:right-6',
                         'flex size-10 items-center justify-center',
                         'rounded-2 border border-border-neutral',
                         'bg-surface-accent/80',

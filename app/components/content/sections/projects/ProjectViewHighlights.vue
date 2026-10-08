@@ -45,7 +45,7 @@ const {
     gap: 2rem;
 }
 
-@media (width < 64rem) {
+@media (width < 69rem) {
     .project-view__columns {
         grid-template-columns: 1fr;
         gap: 1.5rem;

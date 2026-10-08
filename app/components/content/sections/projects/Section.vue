@@ -2,7 +2,7 @@
     <SectionWrapper
         id="projects"
         :inner-class="[
-            'py-20',
+            'py-8 md:py-20',
         ]"
     >
         <SectionHeader
@@ -14,9 +14,9 @@
         <ul
             :class="[
                 'relative z-0',
-                'mt-10',
-                'grid grid-cols-2',
-                'md:gap-4',
+                'mt-8 md:mt-10',
+                'grid grid-cols-1 gap-4',
+                'md:grid-cols-2 md:gap-4',
             ]"
         >
             <li
