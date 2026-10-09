@@ -4,6 +4,7 @@
             ref="project-card"
             :image="image"
             :title="title"
+            :subtitle="subtitle"
             :role="role"
             :period="period"
             :summary="summary"
@@ -18,7 +19,9 @@
                 :card-b-box="{ width, height, top, left }"
                 :image="image"
                 :title="title"
+                :subtitle="subtitle"
                 :description="description"
+                :contribution="contribution"
                 :role="role"
                 :period="period"
                 :summary="summary"
@@ -35,7 +38,9 @@
                 v-model:opened="opened"
                 :image="image"
                 :title="title"
+                :subtitle="subtitle"
                 :description="description"
+                :contribution="contribution"
                 :role="role"
                 :period="period"
                 :summary="summary"
@@ -64,7 +69,9 @@ import ProjectView from "./ProjectView.vue";
 const {
     image,
     title,
+    subtitle,
     description,
+    contribution,
     role,
     period,
     summary,
@@ -76,7 +83,9 @@ const {
 } = defineProps<{
     image: string;
     title: string;
+    subtitle: string;
     description: string;
+    contribution: string;
     role: string;
     period: string;
     summary: string;

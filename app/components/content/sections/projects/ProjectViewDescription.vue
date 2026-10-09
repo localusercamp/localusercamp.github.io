@@ -7,8 +7,20 @@
         :style="{ '--section-index': index }"
     >
         <p
-            class="project-view__about"
-            v-text="text"
+            :class="[
+                'text-text-ghosty',
+                'text-4 leading-6.5',
+            ]"
+            v-text="description"
+        />
+
+        <p
+            :class="[
+                'mt-3',
+                'text-text-ghosty',
+                'text-4 leading-6.5',
+            ]"
+            v-text="contribution"
         />
     </section>
 </template>
@@ -18,19 +30,11 @@
 <script setup lang="ts">
 const {
     index,
-    text,
+    description,
+    contribution,
 } = defineProps<{
     index: number;
-    text: string;
+    description: string;
+    contribution: string;
 }>();
 </script>
-
-
-
-<style scoped>
-.project-view__about {
-    color: var(--color-text-ghosty);
-    font-size: 1rem;
-    line-height: 1.6;
-}
-</style>

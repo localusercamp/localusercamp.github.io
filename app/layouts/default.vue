@@ -2,8 +2,8 @@
     <div
         :class="[
             'min-h-screen',
+            'pt-16 md:pt-18',
             'flex flex-col items-stretch justify-start',
-            'bg-neutral-50 dark:bg-neutral-950',
             'dark:text-white',
         ]"
     >
@@ -24,6 +24,12 @@
 
 
 <script setup lang="ts">
-import { LayoutHeader, LayoutFooter } from "~/components/layout";
+import { LayoutHeader, LayoutFooter } from "~/components/layouts/default";
+
+useHead({
+    bodyAttrs: {
+        class: "bg-neutral-50 dark:bg-neutral-950",
+    },
+});
 </script>
 

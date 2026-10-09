@@ -4,6 +4,7 @@
         :class="[
             'project-card',
             'relative',
+            'w-full',
             'rounded-4 bg-surface',
             'border border-border-neutral',
             'hover:border-primary-500',
@@ -25,7 +26,7 @@
                 :alt="title"
                 :class="[
                     'rounded-3',
-                    'w-full aspect-video',
+                    'w-full aspect-video max-md:max-h-50',
                     'md:aspect-auto md:size-40',
                     'object-cover object-center',
                 ]"
@@ -54,6 +55,16 @@
 
                 <icon-arrow-up-right class="project-card__arrow" />
             </div>
+
+            <p
+                :class="[
+                    'mt-1',
+                    'text-3 leading-4',
+                    'text-text-ghosty',
+                ]"
+                v-text="subtitle"
+            />
+
             <ProjectRole
                 :role="role"
                 :period="period"
@@ -80,12 +91,14 @@ import ProjectRole from "./ProjectRole.vue";
 const {
     image,
     title,
+    subtitle,
     role,
     period,
     summary,
 } = defineProps<{
     image: string;
     title: string;
+    subtitle: string;
     role: string;
     period: string;
     summary: string;

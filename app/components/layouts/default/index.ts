@@ -1,7 +1,7 @@
-import LayoutHeader from "./Header.vue";
 import LayoutFooter from "./Footer.vue";
+import LayoutHeader from "./Header.vue";
 
 export {
-    LayoutHeader,
     LayoutFooter,
+    LayoutHeader,
 };

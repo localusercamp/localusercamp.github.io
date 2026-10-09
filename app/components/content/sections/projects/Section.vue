@@ -25,7 +25,9 @@
             >
                 <Project
                     :title="project.title"
+                    :subtitle="project.subtitle"
                     :description="project.description"
+                    :contribution="project.contribution"
                     :image="project.image"
                     :role="project.role"
                     :period="project.period"
@@ -75,19 +77,19 @@ provide(imageViewerKey, {
 });
 
 
-
 const projects = computed(() => [
     {
         image: "/media/images/projects/visitugra/cover.webp",
         title: "Вулфи",
-        description: "Вулфи — цифровая платформа для автоматизации дополнительного образования. Учреждения ведут программы и группы, отслеживают посещаемость и формируют отчётность в едином окне, а родители записываются на занятия и следят за обучением ребёнка.",
-        role: "Tech lead",
-        period: "2022 — 2024",
-        summary: "Собрал платформу для дополнительного образования с нуля: архитектура, API, личный кабинет и админ-панель.",
+        subtitle: "Федеральная платформа детского образования",
+        summary: "Спроектировал и разработал архитектуру платформы из 5 фронтенд-приложений с общим бекендом.",
+        description: "Платформа для цифровизации бизнеса в сфере дополнительного образования. Продукт позволяет организациям создавать кастомизируемый личный кабинет, упрощает составление расписания и ведения учета посещений, а так же делает процесс образования прозрачным для родителей и более интересным для детей.",
+        contribution: "В проекте я занимался проектированием архитектуры, реализацией функционала и подбором технологий. Было много интересных и не тривиальных задач, которые мы решали всей командой, например: оплата подписок, календарь, расписание, геймификация, достижения, собственный UIKit, а так же внутренние инструменты для повышения DX и много чего еще. В проекте мне удалось много поэкспериментировать и многому научиться.",
+        role: "Tech Lead",
+        period: "2023 — 2026",
         tags: ["TypeScript", "Vue 3", "Nuxt 4", "TailwindCSS", "PHP 8.3", "Laravel 12", "PostgreSQL"],
         links: [
-            { label: "visitugra.ru",    href: "https://visitugra.ru" },
-            { label: "lk.visitugra.ru", href: "https://lk.visitugra.ru" },
+            { label: "wolfie.ru", href: "https://wolfie.ru" },
         ],
         gallery: [
             "/media/images/projects/visitugra/cover.webp",
@@ -96,24 +98,30 @@ const projects = computed(() => [
             "/media/images/projects/visitugra/cover.webp",
         ],
         tasks: [
-            "Спроектировал архитектуру и REST API на Nuxt + Laravel",
-            "Разработал личный кабинет, каталог и админ-панель",
-            "Настроил CI/CD, деплой и мониторинг",
+            "Спроектировал модульную архитектуру бэкенд приложения и реализовал внутренние инструменты и абстракции для упрощения разработки",
+            "Спроектировал модульную архитектуру фронтенд приложений на основе Nuxt Layers и паттерна \"Barrel\"",
+            "Спроектировал и реализовал UIKit как самодостаточный Nuxt-слой с помощью фреймворка для создания дизайн систем RekaUI",
+            "Спроектировал и реализовал подсистему расписания с поддержкой кастомного RRULE",
+            "Спроектировал и реализовал CRM-подсистему отслеживания жизненного цикла клиента",
+            "Спроектировал и реализовал подсистему единой аутентификации и авторизации между всеми фронтенд приложениями",
+            "Внедрил в продукт TailwindCSS и TypeScript, что позволило создавать компоненты быстрее и надежнее",
         ],
         results: [
-            "Ускорил загрузку страниц на 40%",
-            "15 000+ пользователей в месяц",
-            "Сократил время публикации контента в 3 раза",
+            // "Ускорил загрузку страниц на 40%",
+            // "15 000+ пользователей в месяц",
+            // "Сократил время публикации контента в 3 раза",
         ],
     },
     {
         image: "/media/images/projects/visitugra/cover.webp",
-        title: "VisitUgra",
+        title: "ВизитЮгра",
+        subtitle: "Региональная платформа развития туризма",
+        summary: "Разработал 9 модулей платформы - от аналитики до многофункциональных редакторов.",
         description: "VisitUgra — единая цифровая туристическая платформа Югры. Объединяет каталог туров и маршрутов, онлайн-бронирование, личный кабинет туриста и инструменты для туроператоров региона.",
+        contribution: "Разработал большинство модулей платформы: каталог туров и маршрутов, онлайн-бронирование, личный кабинет туриста и инструменты для туроператоров, а также модули аналитики и многофункциональные редакторы.",
         role: "Fullstack-разработчик",
-        period: "2022 — 2024",
-        summary: "Участвовал в развитии большой туристической платформы региона: портал, личный кабинет туроператора и бэкенд-API",
-        tags: ["JavaScript", "Vue 2", "Nuxt 2", "SCSS / TailwindCSS", "PHP 7.4 - 8.0", "Laravel 6 - 11", "MySQL"],
+        period: "2020 — 2026",
+        tags: ["JavaScript", "Vue 2", "Nuxt 2", "SCSS / TailwindCSS", "PHP 7.4 - 8.0", "Laravel 6 - 10", "MySQL"],
         links: [
             { label: "visitugra.ru",    href: "https://visitugra.ru" },
             { label: "lk.visitugra.ru", href: "https://lk.visitugra.ru" },
@@ -140,11 +148,13 @@ const projects = computed(() => [
     {
         image: "/media/images/projects/visitugra/cover.webp",
         title: "LetSki",
+        subtitle: "Платформа для детской лыжной школы",
+        summary: "Спроектировал и разработал архитектуру платформы, которая цифровизовала франшизу в нескольких городах.",
         description: "LetSki — цифровая платформа для детской лыжной школы. Тренеры ведут группы и расписание занятий, отмечают посещаемость и прогресс учеников, а родители записываются на тренировки и следят за результатами ребёнка в личном кабинете.",
+        contribution: "Спроектировал архитектуру и API сервиса, разработал личные кабинеты тренеров и родителей, расписание и учёт посещаемости, настроил интеграции и деплой.",
         role: "Fullstack-разработчик",
-        period: "2023 — 2024",
-        summary: "Разработал платформу для лыжной школы: расписание, учёт посещаемости и личный кабинет родителя.",
-        tags: ["TypeScript", "Vue 3", "Nuxt 3", "TailwindCSS", "PHP 8.2", "Laravel 10", "PostgreSQL"],
+        period: "2022 — 2023",
+        tags: ["JavaScript", "Vue 2", "Nuxt 2", "SCSS", "PHP 8.0", "Laravel 9", "PostgreSQL"],
         links: [],
         gallery: [
             "/media/images/projects/visitugra/cover.webp",
@@ -166,12 +176,17 @@ const projects = computed(() => [
     {
         image: "/media/images/projects/visitugra/cover.webp",
         title: "Мониторинг Югра",
+        subtitle: "Государственная аналитическая система региона",
+        summary: "Разработал модули отчетов и аналитики для различных организаций правительства.",
         description: "Мониторинг Югра — государственная система сбора и визуализации данных о регионе. Сводит разрозненные показатели — зарплаты, экономику, закупки и другие — в единую аналитическую панель для принятия управленческих решений.",
+        contribution: "Разрабатывал модули сбора данных и аналитических панелей для департаментов правительства Югры, проектировал API и интеграции, визуализировал отчётность.",
         role: "Fullstack-разработчик",
-        period: "2022 — 2024",
-        summary: "Участвовал в развитии государственной аналитической системы: сбор данных, отчётность и дашборды.",
-        tags: ["TypeScript", "Vue 3", "Nuxt", "TailwindCSS", "PHP", "Laravel", "PostgreSQL"],
-        links: [],
+        period: "2020 — 2022",
+        tags: ["JavaScript", "Vue 2", "Nuxt 2", "PHP 7.0 - 8.0", "Laravel 5 - 8", "PostgreSQL"],
+        links: [
+            { label: "lk-monitoring.admhmao.ru",  href: "https://lk-monitoring.admhmao.ru" },
+            { label: "lk2-monitoring.admhmao.ru", href: "https://lk2-monitoring.admhmao.ru" },
+        ],
         gallery: [
             "/media/images/projects/visitugra/cover.webp",
             "/media/images/projects/visitugra/image4.webp",
@@ -192,17 +207,18 @@ const projects = computed(() => [
     {
         image: "/media/images/projects/visitugra/cover.webp",
         title: "EaseAI",
+        subtitle: "Корпоративный AI-сервис",
+        summary: "Разрабатывал AI-платформу для решения рабочих задач с помощью специализированных ИИ-агентов.",
         description: "EaseAI — платформа для решения повседневных задач с помощью ИИ. Набор специализированных агентов закрывает часто возникающие бытовые и рабочие вопросы: от планирования до подготовки документов.",
+        contribution: "Спроектировал архитектуру платформы и API, реализовал интерфейс и сценарии работы ИИ-агентов, интегрировал языковые модели ChatGPT, ГигаЧат и YandexGPT.",
         role: "Fullstack-разработчик",
-        period: "2024 — 2025",
-        summary: "Разрабатываю ИИ-платформу с набором агентов под часто возникающие задачи пользователей.",
-        tags: ["TypeScript", "Vue 3", "Nuxt 4", "TailwindCSS", "Node.js", "PostgreSQL", "LLM / AI"],
+        period: "2024",
+        tags: ["ChatGPT / ГигаЧат / YandexGPT", "PHP 8.0", "Laravel 9", "SQLite", "TypeScript", "Vue 3", "Nuxt 3", "TailwindCSS"],
         links: [],
         gallery: [
-            "/media/images/projects/visitugra/cover.webp",
-            "/media/images/projects/visitugra/image1.webp",
-            "/media/images/projects/visitugra/image3.webp",
-            "/media/images/projects/visitugra/image5.webp",
+            "/media/images/projects/easeai/image1.webp",
+            "/media/images/projects/easeai/image2.webp",
+            "/media/images/projects/easeai/image3.webp",
         ],
         tasks: [
             "Спроектировал архитектуру платформы и API сервиса",

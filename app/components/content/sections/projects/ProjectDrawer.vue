@@ -6,56 +6,71 @@
         <DrawerPortal>
             <DrawerOverlay
                 :class="[
-                    'fixed inset-0 z-40 bg-neutral-950/60 backdrop-blur-sm',
-                    'data-[state=open]:animate-drawer-overlay-in',
-                    'data-[state=closed]:animate-drawer-overlay-out',
+                    'drawer-overlay',
+                    'fixed inset-0 z-110 bg-neutral-950/60 backdrop-blur-sm',
                 ]"
             />
 
             <DrawerContent
                 :class="[
-                    'fixed inset-x-0 bottom-0 z-50',
-                    'flex flex-col max-h-[88dvh] overflow-hidden',
-                    'rounded-t-6 border-t border-border-neutral bg-surface',
-                    'translate-y-(--drawer-swipe-movement-y) transition-transform duration-300 ease-out',
+                    'drawer-content',
+                    'fixed -inset-x-px bottom-0 z-120',
+                    'rounded-t-6',
+                    'border-t border-x border-border-neutral',
+                    'bg-surface',
+                    'flex flex-col max-h-[80dvh] overflow-hidden',
                     'data-[swiping]:duration-0',
-                    'data-[state=open]:animate-drawer-in',
-                    'data-[state=closed]:animate-drawer-out',
                     'pb-[env(safe-area-inset-bottom)]',
+                    [
+                        'transition-transform duration-300 ease-out',
+                        'translate-y-(--drawer-swipe-movement-y)',
+                    ],
                 ]"
                 :aria-describedby="undefined"
             >
                 <DrawerHandle
-                    class="mx-auto mt-2 h-1 w-10 shrink-0 rounded-full bg-text-ghosty/40"
+                    class="mx-auto my-4 h-1 w-10 shrink-0 rounded-full bg-text-ghosty/40"
                 />
-
-                <DrawerClose
-                    :class="[
-                        'absolute top-3 right-3',
-                        'rounded-2 p-2 bg-surface-accent/80',
-                        'text-text-ghosty transition-colors hover:text-primary-500',
-                    ]"
-                >
-                    <icon-x class="size-5" />
-                </DrawerClose>
 
                 <div
                     :class="[
-                        'flex-1 overflow-y-auto overscroll-contain',
-                        'p-5 pt-9',
+                        'overflow-y-auto overscroll-contain',
+                        'flex-1',
+                        'px-4 pb-4',
                     ]"
                 >
-                    <DrawerTitle as-child>
-                        <h3
-                            class="pr-10 text-6 leading-7 font-bold"
-                            v-text="title"
+                    <header
+                        :class="[
+                            'sticky top-0',
+                        ]"
+                    >
+                        <DrawerTitle as-child>
+                            <h3
+                                class="text-6 leading-7 font-bold bg-surface"
+                                v-text="title"
+                            />
+                        </DrawerTitle>
+
+                        <div
+                            :class="[
+                                'w-full h-4',
+                                'bg-linear-to-b from-surface from-25% to-transparent',
+                            ]"
                         />
-                    </DrawerTitle>
+                    </header>
+
+                    <p
+                        :class="[
+                            'text-3.5 leading-5',
+                            'text-text-ghosty',
+                        ]"
+                        v-text="subtitle"
+                    />
 
                     <ProjectRole
                         :role="role"
                         :period="period"
-                        class="mt-2"
+                        class="mt-1.5"
                     />
 
                     <p
@@ -71,26 +86,35 @@
                         class="mt-3"
                     />
 
-                    <ProjectViewGallery
-                        :index="0"
-                        :images="gallery"
-                    />
+                    <transition v-bind="RevealTransition">
+                        <ProjectViewGallery
+                            :index="0"
+                            :images="gallery"
+                        />
+                    </transition>
 
-                    <ProjectViewDescription
-                        :index="1"
-                        :text="description"
-                    />
+                    <transition v-bind="RevealTransition">
+                        <ProjectViewDescription
+                            :index="1"
+                            :description="description"
+                            :contribution="contribution"
+                        />
+                    </transition>
 
-                    <ProjectViewLinks
-                        :index="2"
-                        :links="links"
-                    />
+                    <transition v-bind="RevealTransition">
+                        <ProjectViewLinks
+                            :index="2"
+                            :links="links"
+                        />
+                    </transition>
 
-                    <ProjectViewHighlights
-                        :index="3"
-                        :tasks="tasks"
-                        :results="results"
-                    />
+                    <transition v-bind="RevealTransition">
+                        <ProjectViewHighlights
+                            :index="3"
+                            :tasks="tasks"
+                            :results="results"
+                        />
+                    </transition>
                 </div>
             </DrawerContent>
         </DrawerPortal>
@@ -101,7 +125,6 @@
 
 <script setup lang="ts">
 import {
-    DrawerClose,
     DrawerContent,
     DrawerHandle,
     DrawerOverlay,
@@ -117,9 +140,13 @@ import ProjectViewGallery from "./ProjectViewGallery.vue";
 import ProjectViewHighlights from "./ProjectViewHighlights.vue";
 import ProjectViewLinks from "./ProjectViewLinks.vue";
 
+import type { TransitionProps } from "vue";
+
 const {
     title,
+    subtitle,
     description,
+    contribution,
     role,
     period,
     summary,
@@ -130,7 +157,9 @@ const {
     results,
 } = defineProps<{
     title: string;
+    subtitle: string;
     description: string;
+    contribution: string;
     role: string;
     period: string;
     summary: string;
@@ -150,6 +179,13 @@ const emit = defineEmits<{
     "close:view": [];
 }>();
 
+const RevealTransition: TransitionProps = {
+    appear: true,
+    enterActiveClass: "transition-[opacity,translate] duration-500 ease-out delay-[calc(200ms+var(--section-index)*200ms)]",
+    enterFromClass: "opacity-0 translate-y-4",
+    enterToClass: "opacity-100 translate-y-0",
+};
+
 
 
 function handleOpenChange(value: boolean): void {
@@ -160,3 +196,48 @@ function handleOpenChange(value: boolean): void {
     }
 }
 </script>
+
+
+
+<style scoped>
+.drawer-overlay[data-state="open"] {
+    animation: drawer-overlay-in 500ms ease;
+}
+
+.drawer-overlay[data-state="closed"] {
+    animation: drawer-overlay-out 200ms ease;
+}
+
+.drawer-content[data-state="open"] {
+    animation: drawer-in 720ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.drawer-content[data-state="closed"] {
+    animation: drawer-out 240ms cubic-bezier(0.4, 0, 1, 1);
+}
+
+
+@keyframes drawer-in {
+    from {
+        translate: 0 100%;
+    }
+}
+
+@keyframes drawer-out {
+    to {
+        translate: 0 100%;
+    }
+}
+
+@keyframes drawer-overlay-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes drawer-overlay-out {
+    to {
+        opacity: 0;
+    }
+}
+</style>

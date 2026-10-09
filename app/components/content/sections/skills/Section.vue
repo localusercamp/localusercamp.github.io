@@ -14,7 +14,7 @@
         <ul
             :class="[
                 'mt-8 md:mt-10',
-                'grid grid-cols-2 gap-3',
+                'grid grid-cols-2 min-[36rem]:grid-cols-3 gap-3',
                 'md:grid-cols-5 md:gap-6',
             ]"
         >

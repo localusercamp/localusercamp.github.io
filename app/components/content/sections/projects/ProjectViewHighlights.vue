@@ -6,13 +6,20 @@
         ]"
         :style="{ '--section-index': index }"
     >
-        <div class="project-view__columns">
+        <div
+            :class="[
+                'project-view__columns',
+                { 'project-view__columns--single': !results.length },
+            ]"
+        >
             <ProjectViewList
                 title="Задачи"
                 :items="tasks"
+                class="project-view__tasks"
             />
 
             <ProjectViewList
+                v-if="results.length"
                 title="Результаты"
                 :items="results"
             />
@@ -43,6 +50,14 @@ const {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+}
+
+.project-view__columns--single {
+    grid-template-columns: 1fr;
+}
+
+.project-view__tasks {
+    max-width: 66.6667%;
 }
 
 @media (width < 69rem) {

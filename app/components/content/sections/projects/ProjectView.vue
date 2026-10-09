@@ -48,6 +48,11 @@
                             v-text="title"
                         />
 
+                        <p
+                            class="project-view__subtitle"
+                            v-text="subtitle"
+                        />
+
                         <ProjectRole
                             :role="role"
                             :period="period"
@@ -75,7 +80,8 @@
 
                         <ProjectViewDescription
                             :index="1"
-                            :text="description"
+                            :description="description"
+                            :contribution="contribution"
                         />
 
                         <ProjectViewLinks
@@ -121,7 +127,9 @@ const {
     cardBBox,
     image,
     title,
+    subtitle,
     description,
+    contribution,
     role,
     period,
     summary,
@@ -134,7 +142,9 @@ const {
     cardBBox: CardBBox;
     image: string;
     title: string;
+    subtitle: string;
     description: string;
+    contribution: string;
     role: string;
     period: string;
     summary: string;
@@ -183,6 +193,7 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
     --view-duration: 1400ms;
     --view-ease: cubic-bezier(0.16, 1, 0.3, 1);
     --view-text-delay: 150ms;
+    --view-subtitle-duration: 700ms;
     --view-backdrop-duration: 800ms;
     --view-cover-duration: 600ms;
     --view-cover-delay: 600ms;
@@ -195,6 +206,7 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
     --view-section-duration: 400ms;
     --view-section-hide-duration: 150ms;
     --view-padding: 2rem;
+    --view-max-height: 45rem;
 }
 
 .view-backdrop {
@@ -230,6 +242,7 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
     border: 1px solid var(--color-border-neutral);
     border-radius: var(--radius-4);
     background-color: var(--color-surface);
+    max-height: var(--view-max-height);
     overflow: hidden;
     will-change: transform, width, height;
     transform: translate(var(--initial-x), var(--initial-y));
@@ -299,11 +312,17 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
     top: 0.75rem;
     left: 11.75rem;
     width: calc(100% - 12.5rem);
+    overflow: hidden;
+    scrollbar-width: none;
     transition:
         top var(--view-duration) var(--view-ease),
         left var(--view-duration) var(--view-ease),
         width var(--view-duration) var(--view-ease),
         padding var(--view-duration) var(--view-ease);
+}
+
+.project-view__body::-webkit-scrollbar {
+    display: none;
 }
 
 .view-enter-to .project-view__body,
@@ -312,7 +331,15 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     padding: var(--view-padding);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.view-leave-active .project-view__body {
+    overflow: hidden;
 }
 
 .view-enter-to .project-view__body {
@@ -323,6 +350,7 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
     top: 0.75rem;
     left: 11.75rem;
     width: calc(100% - 12.5rem);
+    height: auto;
     padding: 0;
 }
 
@@ -349,6 +377,21 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
     font-size: 1.125rem;
     line-height: 1.5rem;
     font-weight: 600;
+}
+
+.project-view__subtitle {
+    margin-top: 0.25rem;
+    color: var(--color-text-ghosty);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    transition:
+        font-size var(--view-subtitle-duration) var(--view-ease),
+        line-height var(--view-subtitle-duration) var(--view-ease);
+}
+
+.view-leave-to .project-view__subtitle {
+    font-size: 0.75rem;
+    line-height: 1rem;
 }
 
 .project-view__role {

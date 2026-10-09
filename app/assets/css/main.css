@@ -167,34 +167,6 @@
             opacity: 0;
         }
     }
-
-    --animate-drawer-in: drawer-in 460ms cubic-bezier(0.22, 1, 0.36, 1);
-    @keyframes drawer-in {
-        from {
-            translate: 0 100%;
-        }
-    }
-
-    --animate-drawer-out: drawer-out 240ms cubic-bezier(0.4, 0, 1, 1);
-    @keyframes drawer-out {
-        to {
-            translate: 0 100%;
-        }
-    }
-
-    --animate-drawer-overlay-in: drawer-overlay-in 320ms ease;
-    @keyframes drawer-overlay-in {
-        from {
-            opacity: 0;
-        }
-    }
-
-    --animate-drawer-overlay-out: drawer-overlay-out 200ms ease;
-    @keyframes drawer-overlay-out {
-        to {
-            opacity: 0;
-        }
-    }
 }
 
 @layer base {
