@@ -15,7 +15,7 @@
                 'pointer-events-none select-none',
                 'absolute -top-10 -right-20 -z-1 ',
                 'w-full aspect-square',
-                'bg-linear-to-l from-primary-500/40 to-primary-500/0',
+                'bg-linear-to-l from-primary-500/40 light:from-primary-500/15 to-primary-500/0',
             ]"
             :style="ambientBackgroundStyle"
         />
@@ -30,7 +30,7 @@
         />
 
         <div>
-            <h3
+            <p
                 :class="[
                     'font-medium',
                     'text-3.5 leading-5',

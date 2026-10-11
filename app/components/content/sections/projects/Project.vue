@@ -43,7 +43,6 @@
                 :contribution="contribution"
                 :role="role"
                 :period="period"
-                :summary="summary"
                 :tags="tags"
                 :links="links"
                 :gallery="gallery"

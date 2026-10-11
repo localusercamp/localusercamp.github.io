@@ -1,22 +1,29 @@
 <template>
-    <Teleport to="body">
-        <transition
-            enter-active-class="transition-opacity duration-300"
-            enter-from-class="opacity-0"
-            enter-to-class="opacity-100"
-            leave-active-class="transition-opacity duration-300"
-            leave-from-class="opacity-100"
-            leave-to-class="opacity-0"
-        >
-            <div
-                v-if="$opened"
+    <DialogRoot
+        :open="$opened"
+        @update:open="$opened = $event"
+    >
+        <DialogPortal>
+            <DialogOverlay
                 :class="[
+                    'image-viewer__overlay',
                     'fixed inset-0 z-[200]',
                     'bg-neutral-950/90',
                     'backdrop-blur-sm',
                 ]"
-                @click="$opened = false"
+            />
+
+            <DialogContent
+                :class="[
+                    'image-viewer__content',
+                    'fixed inset-0 z-[201]',
+                ]"
+                :aria-describedby="undefined"
             >
+                <DialogTitle class="sr-only">
+                    <span v-text="v('image_viewer_title')" />
+                </DialogTitle>
+
                 <div
                     ref="track"
                     :class="[
@@ -25,7 +32,6 @@
                         'overflow-x-auto overflow-y-hidden',
                         '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
                     ]"
-                    @click.stop
                     @scroll="handleScroll()"
                 >
                     <div
@@ -102,15 +108,21 @@
                 >
                     <icon-x class="size-5" />
                 </button>
-            </div>
-        </transition>
-    </Teleport>
+            </DialogContent>
+        </DialogPortal>
+    </DialogRoot>
 </template>
 
 
 
 <script setup lang="ts">
-import { useEventListener } from "@vueuse/core";
+import {
+    DialogContent,
+    DialogOverlay,
+    DialogPortal,
+    DialogRoot,
+    DialogTitle,
+} from "reka-ui";
 
 const {
     images,
@@ -121,6 +133,8 @@ const {
 }>();
 
 const $opened = defineModel<boolean>("opened", { required: false, default: false });
+
+const { v } = useVocabulary();
 
 const track = useTemplateRef<HTMLElement>("track");
 
@@ -140,19 +154,7 @@ watch($opened, (value) => {
     });
 });
 
-useEventListener(window, "keydown", handleKeydown);
 
-
-
-function handleKeydown(event: KeyboardEvent): void {
-    if (!$opened.value) {
-        return;
-    }
-
-    if (event.key === "Escape") {
-        $opened.value = false;
-    }
-}
 
 function handleScroll(): void {
     const trackElement = track.value;
@@ -182,3 +184,30 @@ function scrollToIndex(index: number, behavior: ScrollBehavior): void {
     });
 }
 </script>
+
+
+
+<style scoped>
+.image-viewer__overlay[data-state="open"],
+.image-viewer__content[data-state="open"] {
+    animation: image-viewer-in 300ms ease;
+}
+
+.image-viewer__overlay[data-state="closed"],
+.image-viewer__content[data-state="closed"] {
+    animation: image-viewer-out 300ms ease;
+}
+
+
+@keyframes image-viewer-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes image-viewer-out {
+    to {
+        opacity: 0;
+    }
+}
+</style>

@@ -73,14 +73,6 @@
                         class="mt-1.5"
                     />
 
-                    <p
-                        :class="[
-                            'mt-2',
-                            'text-3.5 leading-5.5 text-text-ghosty',
-                        ]"
-                        v-text="summary"
-                    />
-
                     <ProjectTags
                         :tags="tags"
                         class="mt-3"
@@ -149,7 +141,6 @@ const {
     contribution,
     role,
     period,
-    summary,
     tags,
     links,
     gallery,
@@ -162,7 +153,6 @@ const {
     contribution: string;
     role: string;
     period: string;
-    summary: string;
     tags: string[];
     links: {
         label: string;

@@ -63,7 +63,7 @@ const skills = [
     { title: "Redis",       subtitle: "2 года",  icon: "/media/icons/skills/redis.svg",       class: "" },
     { title: "Git",         subtitle: "6+ лет",  icon: "/media/icons/skills/git.svg",         class: "md:col-start-1" },
     { title: "GitLab",      subtitle: "5+ лет",  icon: "/media/icons/skills/gitlab.svg",      class: "" },
-    { title: "GitHub",      subtitle: "6+ лет",  icon: "/media/icons/skills/github.svg",      class: "" },
+    { title: "GitHub",      subtitle: "6+ лет",  icon: "/media/icons/skills/github.svg",      class: "[&_img]:light:invert" },
 ];
 
 const ambients = [

@@ -28,7 +28,7 @@ import { LayoutHeader, LayoutFooter } from "~/components/layouts/default";
 
 useHead({
     bodyAttrs: {
-        class: "bg-neutral-50 dark:bg-neutral-950",
+        class: "bg-surface",
     },
 });
 </script>

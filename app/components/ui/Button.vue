@@ -41,6 +41,7 @@ const classes = tv({
         "flex flex-row items-center justify-center gap-2",
         "font-medium",
         "text-3.5 leading-5",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500",
     ],
     variants: {
         variant: {

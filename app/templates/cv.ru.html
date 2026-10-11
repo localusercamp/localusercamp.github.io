@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Евгений Полозов — Senior Fullstack Developer (CV)</title>
+<style>
+    @page {
+        size: A4;
+        margin: 11mm 12mm;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+        font-size: 9.8pt;
+        line-height: 1.4;
+        color: #000;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    /* Header */
+
+    .header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 0 16px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #000;
+    }
+
+    .header__name {
+        margin: 0;
+        font-size: 21pt;
+        line-height: 1.1;
+        letter-spacing: -0.3px;
+    }
+
+    .header__grade {
+        margin: 2px 0 0;
+        font-size: 11pt;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .header__meta {
+        margin: 0;
+        align-self: start;
+        text-align: right;
+        font-size: 9.2pt;
+        color: #444;
+    }
+
+    .header__meta div {
+        display: flex;
+        justify-content: flex-end;
+        gap: 6px;
+    }
+
+    .header__meta dd {
+        margin: 0;
+        color: #000;
+        font-weight: 600;
+    }
+
+    .header__contacts {
+        grid-column: 1 / -1;
+        margin: 8px 0 0;
+        font-size: 9.6pt;
+    }
+
+    .header__contacts a {
+        border-bottom: 0.5px solid #999;
+    }
+
+    .header__contacts .sep {
+        margin: 0 6px;
+        color: #999;
+    }
+
+    /* Sections */
+
+    .section {
+        margin-top: 12px;
+    }
+
+    .section__title {
+        margin: 0 0 6px;
+        font-size: 10.5pt;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border-bottom: 1px solid #000;
+        padding-bottom: 2px;
+        break-after: avoid;
+    }
+
+    .section p {
+        margin: 0;
+    }
+
+    /* Skills */
+
+    .skills {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px 20px;
+    }
+
+    .skills__label {
+        font-weight: 700;
+    }
+
+    /* Experience */
+
+    .job__head,
+    .project__head,
+    .edu__head,
+    .cert__head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .job__company {
+        margin: 0;
+        font-size: 11pt;
+    }
+
+    .job__period,
+    .project__period,
+    .edu__period {
+        font-weight: 600;
+        color: #444;
+        white-space: nowrap;
+    }
+
+    .job__role {
+        margin: 1px 0 0;
+        font-weight: 600;
+    }
+
+    .job__summary {
+        margin: 3px 0 0;
+    }
+
+    .project {
+        margin-top: 9px;
+        break-inside: avoid;
+    }
+
+    .project__head h3 {
+        margin: 0;
+        font-size: 10.2pt;
+    }
+
+    .project__role {
+        font-weight: 400;
+        color: #444;
+    }
+
+    .project__about {
+        margin: 2px 0 0;
+    }
+
+    .project__tasks {
+        margin: 3px 0 0;
+        padding-left: 14px;
+    }
+
+    .project__tasks li {
+        margin: 0 0 1px;
+    }
+
+    .project__stack,
+    .project__links {
+        margin: 3px 0 0;
+        color: #333;
+    }
+
+    .project__stack strong,
+    .project__links strong {
+        color: #000;
+    }
+
+    /* Footer blocks */
+
+    .extra {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 20px;
+    }
+
+    .edu,
+    .cert {
+        break-inside: avoid;
+    }
+
+    .edu p {
+        margin: 2px 0 0;
+    }
+
+    .cert p {
+        margin: 2px 0 0;
+    }
+
+    .languages {
+        margin-top: 12px;
+    }
+
+    .muted {
+        color: #444;
+    }
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div>
+        <h1 class="header__name">Евгений Полозов</h1>
+        <p class="header__grade">Senior Fullstack Developer</p>
+    </div>
+
+    <dl class="header__meta">
+        <div>
+            <dt>Дата рождения:</dt>
+            <dd>21.06.1999</dd>
+        </div>
+        <div>
+            <dt>Формат работы:</dt>
+            <dd>удалённо</dd>
+        </div>
+    </dl>
+
+    <p class="header__contacts">
+        <a href="tel:+79003872838">+7 900 387 28 38</a>
+        <span class="sep">·</span>
+        <a href="mailto:localusercamp.job@ro.ru">localusercamp.job@ro.ru</a>
+        <span class="sep">·</span>
+        <a href="https://t.me/localusercamp">@localusercamp</a>
+        <span class="sep">·</span>
+        <a href="https://github.com/localusercamp">github.com/localusercamp</a>
+    </p>
+</header>
+
+<section class="section">
+    <h2 class="section__title">О себе</h2>
+    <p>
+        Fullstack-разработчик с 6+ годами опыта создания цифровых систем для бизнеса и государства.
+        Проектирую архитектуру, веду команды и отвечаю за результат — от идеи до продакшена.
+        Специализация — TypeScript&nbsp;/ Vue&nbsp;/ Nuxt на фронтенде и PHP&nbsp;/ Laravel на бэкенде.
+        Ценю программирование как инженерную дисциплину, слежу за Open Source и применяю ИИ
+        для автоматизации рутины.
+    </p>
+</section>
+
+<section class="section">
+    <h2 class="section__title">Ключевые навыки</h2>
+    <ul class="skills">
+        <li><span class="skills__label">Языки:</span> JavaScript (6+ лет), TypeScript (4+ года), PHP (6+ лет), SQL (6+ лет)</li>
+        <li><span class="skills__label">Backend:</span> Node (6+ лет), Laravel (6+ лет), REST API, Pest (2+ года)</li>
+        <li><span class="skills__label">Frontend:</span> Vue (6+ лет), Nuxt (6+ лет), HTML (6+ лет), CSS (6+ лет)</li>
+        <li><span class="skills__label">Данные:</span> PostgreSQL (4+ года), MySQL (2 года), Redis (2 года)</li>
+        <li><span class="skills__label">UI:</span> SCSS (3 года), TailwindCSS (4+ года), RekaUI, TipTap</li>
+        <li><span class="skills__label">Инструменты:</span> Git (6+ лет), GitLab (5+ лет), GitHub (6+ лет), Docker (3+ года)</li>
+    </ul>
+</section>
+
+<section class="section">
+    <h2 class="section__title">Опыт работы</h2>
+
+    <article class="job">
+        <div class="job__head">
+            <h3 class="job__company">ООО «Трид Медиа»</h3>
+            <span class="job__period">февраль 2020 — октябрь 2026</span>
+        </div>
+        <p class="job__role">Fullstack-разработчик → Tech Lead</p>
+        <p class="job__summary">
+            Разработка цифровых платформ для бизнеса и государства: дополнительное образование,
+            туризм, государственная аналитика, AI-сервисы. Прошёл путь от доработки легаси-систем
+            до проектирования архитектуры, подбора технологий и руководства командой разработчиков.
+        </p>
+
+        <article class="project">
+            <div class="project__head">
+                <h3>Вулфи — федеральная платформа детского образования <span class="project__role">(Tech Lead)</span></h3>
+                <span class="project__period">2023 — 2026</span>
+            </div>
+            <p class="project__about">
+                Платформа цифровизации дополнительного образования: кастомизируемые личные кабинеты
+                организаций, расписание, учёт посещаемости, геймификация для детей и прозрачность
+                процесса для родителей.
+            </p>
+            <ul class="project__tasks">
+                <li>Спроектировал архитектуру платформы из 5 фронтенд-приложений с общим бэкендом; модульный бэкенд и Nuxt Layers на фронтенде</li>
+                <li>Разработал UIKit как самостоятельный Nuxt-слой на базе RekaUI</li>
+                <li>Реализовал подсистему расписания с поддержкой кастомного RRULE и CRM-подсистему жизненного цикла клиента</li>
+                <li>Объединил приложения единой аутентификацией и авторизацией; перевёл продукт на TypeScript и TailwindCSS</li>
+                <li>Вёл команду из 3 разработчиков: распределение задач, код-ревью, менторинг</li>
+            </ul>
+            <p class="project__stack">
+                <strong>Стек:</strong> TypeScript, Vue 3, Nuxt 4, TailwindCSS, PHP 8.3, Laravel 12, PostgreSQL.
+                <strong>Сайт:</strong> <a href="https://wolfie.ru">wolfie.ru</a>
+            </p>
+        </article>
+
+        <article class="project">
+            <div class="project__head">
+                <h3>ВизитЮгра — региональная платформа развития туризма <span class="project__role">(Fullstack-разработчик)</span></h3>
+                <span class="project__period">2020 — 2026</span>
+            </div>
+            <p class="project__about">
+                Единая цифровая туристическая платформа региона: каталоги достопримечательностей,
+                отелей, туров и мероприятий, онлайн-продажа услуг для туроператоров.
+            </p>
+            <ul class="project__tasks">
+                <li>Разработал 9 модулей платформы: редакторы достопримечательностей, туров и мероприятий, страницы каталогов с фильтрацией</li>
+                <li>Реализовал оплату по принципу маркетплейса и комплексную систему товаров и услуг с онлайн-продажей</li>
+                <li>Построил инструмент кратчайших маршрутов между достопримечательностями; интеграции с Яндекс.Метрикой, Картами, Переводчиком и ЮМани</li>
+                <li>Создал пайплайн оптимизации хранения и сжатия изображений; внедрил квотирование запросов к сторонним сервисам</li>
+            </ul>
+            <p class="project__stack">
+                <strong>Результаты:</strong> 50 000+ пользователей в месяц, ускорение загрузки страниц на 40%,
+                сокращение объёма хранения изображений на 40%.
+                <strong>Стек:</strong> JavaScript, Vue 2, Nuxt 2, SCSS&nbsp;/ TailwindCSS, PHP 7.4–8.0, Laravel 6–10, MySQL.
+                <strong>Сайты:</strong> <a href="https://visitugra.ru">visitugra.ru</a>,
+                <a href="https://lk.visitugra.ru">lk.visitugra.ru</a>
+            </p>
+        </article>
+
+        <article class="project">
+            <div class="project__head">
+                <h3>EaseAI — корпоративный AI-сервис <span class="project__role">(Fullstack-разработчик)</span></h3>
+                <span class="project__period">2024</span>
+            </div>
+            <p class="project__about">
+                Платформа специализированных ИИ-агентов для типовых рабочих задач: роли, промпты
+                и подмешивание контекста (RAG), подбор подходящей модели под задачу.
+            </p>
+            <ul class="project__tasks">
+                <li>Собрал сервис целиком за 3 недели как быстрый прототип</li>
+                <li>Спроектировал архитектуру чатов, сообщений, агентов и привязанных к чату моделей</li>
+                <li>Реализовал чат-интерфейс с потоковой печатью ответов и агентную надстройку над чатом GPT</li>
+                <li>Подключил языковые модели ChatGPT, ГигаЧат и YandexGPT</li>
+            </ul>
+            <p class="project__stack">
+                <strong>Стек:</strong> TypeScript, Vue 3, Nuxt 3, TailwindCSS, PHP 8.0, Laravel 9, SQLite.
+            </p>
+        </article>
+
+        <article class="project">
+            <div class="project__head">
+                <h3>LetSki — платформа для детской лыжной школы <span class="project__role">(Fullstack-разработчик)</span></h3>
+                <span class="project__period">2022 — 2023</span>
+            </div>
+            <p class="project__about">
+                Платформа, которая цифровизировала франшизу в нескольких городах: расписание и группы,
+                тренировки и посещаемость, личные кабинеты администраторов, тренеров и родителей.
+            </p>
+            <ul class="project__tasks">
+                <li>Спроектировал архитектуру бэкенда и REST API сервиса</li>
+                <li>Реализовал расписание занятий, группы и учёт посещаемости, серверную логику личных кабинетов</li>
+                <li>Реализовал API для мобильного приложения на Vue Native; настроил развёртывание сервиса</li>
+                <li>Переработал часть дизайна и обновил интерфейс фронтенда</li>
+            </ul>
+            <p class="project__stack">
+                <strong>Стек:</strong> JavaScript, Vue 2, Nuxt 2, SCSS, PHP 8.0, Laravel 9, PostgreSQL.
+            </p>
+        </article>
+
+        <article class="project">
+            <div class="project__head">
+                <h3>Мониторинг Югра — государственная аналитическая система <span class="project__role">(Fullstack-разработчик)</span></h3>
+                <span class="project__period">2020 — 2022</span>
+            </div>
+            <p class="project__about">
+                Система сбора и визуализации данных о регионе: зарплаты, экономика, закупки и другие
+                показатели в единой аналитической панели для управленческих решений.
+            </p>
+            <ul class="project__tasks">
+                <li>Дорабатывал модули сбора и агрегации данных о регионе</li>
+                <li>Реализовал формирование отчётов в форматах, требуемых нормативно-правовыми актами</li>
+                <li>Встраивал новую функциональность в большую легаси-кодовую базу</li>
+            </ul>
+            <p class="project__stack">
+                <strong>Стек:</strong> JavaScript, Vue 2, Nuxt 2, PHP 7.0–8.0, Laravel 5–8, PostgreSQL.
+                <strong>Сайты:</strong> <a href="https://lk-monitoring.admhmao.ru">lk-monitoring.admhmao.ru</a>,
+                <a href="https://lk2-monitoring.admhmao.ru">lk2-monitoring.admhmao.ru</a>
+            </p>
+        </article>
+    </article>
+</section>
+
+<div class="extra">
+    <section class="section">
+        <h2 class="section__title">Образование</h2>
+        <div class="edu">
+            <div class="edu__head">
+                <strong>Югорский государственный университет</strong>
+                <span class="edu__period">2016 — 2020</span>
+            </div>
+            <p>Бакалавриат по направлению «Информатика и вычислительная техника», красный диплом.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section__title">Сертификаты</h2>
+        <div class="cert">
+            <div class="cert__head">
+                <strong>Certified Mid-Level Nuxt Developer</strong>
+                <span class="edu__period">certificates.dev</span>
+            </div>
+            <p>
+                <a href="https://certificates.dev/nuxt/certificates/9d13ed76-99ff-48bf-9649-271e276c5487">certificates.dev/nuxt</a>
+            </p>
+        </div>
+    </section>
+</div>
+
+<section class="section languages">
+    <h2 class="section__title">Языки</h2>
+    <p>Русский — родной. Английский — B1: читаю техническую документацию и веду рабочую переписку.</p>
+</section>
+
+</body>
+</html>

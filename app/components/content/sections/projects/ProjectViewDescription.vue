@@ -9,16 +9,18 @@
         <p
             :class="[
                 'text-text-ghosty',
-                'text-4 leading-6.5',
+                'text-3.5 leading-5',
+                'md:text-4 md:leading-6.5',
             ]"
             v-text="description"
         />
 
         <p
             :class="[
-                'mt-3',
+                'mt-2',
                 'text-text-ghosty',
-                'text-4 leading-6.5',
+                'text-3.5 leading-5',
+                'md:text-4 md:leading-6.5',
             ]"
             v-text="contribution"
         />

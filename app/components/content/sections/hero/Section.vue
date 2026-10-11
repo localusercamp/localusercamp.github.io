@@ -82,16 +82,22 @@
                             inert
                         >
                             <icon-mail class="size-5 -ml-2" />
-                            Связаться
+                            <span v-text="v('contact_me')" />
                         </ui-button>
                     </a>
 
-                    <ui-button
-                        variant="outlined"
+                    <a
+                        :href="cvUrl"
+                        download
                     >
-                        <icon-arrow-down-to-line class="size-5 -ml-2" />
-                        Скачать CV
-                    </ui-button>
+                        <ui-button
+                            variant="outlined"
+                            inert
+                        >
+                            <icon-arrow-down-to-line class="size-5 -ml-2" />
+                            <span v-text="v('download_cv')" />
+                        </ui-button>
+                    </a>
                 </div>
 
                 <hr
@@ -142,6 +148,8 @@ import { SectionWrapper } from "~/components/content/primitives";
 import NuxtCertificateLink from "./NuxtCertificateLink.vue";
 
 const { v, vs } = useVocabulary();
+
+const cvUrl = "/documents/Evgeniy_Polozov_CV.pdf";
 
 const datalist = computed(() => [
     { term: v("dt_years_of_experience"),    value: v("dv_years_of_experience")    },

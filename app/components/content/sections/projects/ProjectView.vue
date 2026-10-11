@@ -34,7 +34,7 @@
                         '--target-h': targetHeightValue,
                     }"
                 >
-                    <div class="project-view__cover">
+                    <div class="project-view__cover dark:bg-text-white">
                         <ui-img
                             :src="image"
                             :alt="title"
@@ -275,8 +275,8 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
     position: absolute;
     top: 0.75rem;
     left: 0.75rem;
-    width: 10rem;
-    height: 10rem;
+    width: 9.125rem;
+    height: 9.125rem;
     overflow: hidden;
     border-radius: 0.75rem;
     opacity: 1;
@@ -286,7 +286,8 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
 .project-view__image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    padding: 1.25rem;
+    object-fit: contain;
     object-position: center;
 }
 
@@ -310,8 +311,8 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
 .project-view__body {
     position: absolute;
     top: 0.75rem;
-    left: 11.75rem;
-    width: calc(100% - 12.5rem);
+    left: 10.875rem;
+    width: calc(100% - 11.625rem);
     overflow: hidden;
     scrollbar-width: none;
     transition:
@@ -348,8 +349,8 @@ const targetHeightValue = computed<string>(() => `${targetHeight.value}px`);
 
 .view-leave-to .project-view__body {
     top: 0.75rem;
-    left: 11.75rem;
-    width: calc(100% - 12.5rem);
+    left: 10.875rem;
+    width: calc(100% - 11.625rem);
     height: auto;
     padding: 0;
 }

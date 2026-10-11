@@ -56,9 +56,11 @@ the class being removed. This bug has recurred several times.
 ## Geometry (seamless open — desktop ProjectView only)
 
 The compact overlay state must match the card. Currently: card `p-3` (0.75rem),
-`gap-3 md:gap-4`, image `size-40`/`rounded-3`; cover at `top/left 0.75rem`; body at
-`top 0.75rem`, `left 11.75rem`, `width calc(100% - 12.5rem)`. When you change padding/gap/image
-size, update these values in sync.
+`gap-3 md:gap-4`, image `size-36.5` (9.125rem)/`rounded-3`; cover at `top/left 0.75rem`; body at
+`top 0.75rem`, `left 10.875rem`, `width calc(100% - 11.625rem)`. When you change padding/gap/image
+size, update these values in sync. The logo inside the image box is inset by a safe zone:
+mobile `p-10`, desktop `md:p-5` (1.25rem — synced with `padding: 1.25rem` on
+`.project-view__image` for the compact overlay state).
 
 ## Timings (current — do not change without a reason)
 
@@ -71,6 +73,12 @@ size, update these values in sync.
 
 ## Misc
 
+- The image viewer (`ProjectImageViewer.vue`) is a reka-ui `Dialog` (teleported above the
+  drawer). This is required for the layer stack: reka's `DismissableLayer` treats clicks /
+  focus inside a later `[data-dismissable-layer]` as "inside" and only the top layer handles
+  `Escape`. Do not revert it to a hand-rolled overlay — the drawer would then intercept
+  outside-press on the viewer and close itself, and its body `pointer-events: none` would
+  make the viewer's buttons unclickable.
 - Expanded body: `top/left 0`, `width 100%`, `padding: var(--view-padding)` (2rem) so the
   gallery can bleed past the padding; `padding` is part of the transition.
 - Gallery full-bleed: `margin-inline: calc(var(--view-padding) * -1)`,

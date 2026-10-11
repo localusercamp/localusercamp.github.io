@@ -15,7 +15,7 @@
             <ProjectViewList
                 title="Задачи"
                 :items="tasks"
-                class="project-view__tasks"
+                :class="{ 'md:max-w-2/3': !results.length }"
             />
 
             <ProjectViewList
@@ -54,10 +54,6 @@ const {
 
 .project-view__columns--single {
     grid-template-columns: 1fr;
-}
-
-.project-view__tasks {
-    max-width: 66.6667%;
 }
 
 @media (width < 69rem) {

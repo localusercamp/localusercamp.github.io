@@ -23,6 +23,18 @@ export default defineNuxtConfig({
         enabled: true,
     },
 
+    app: {
+        head: {
+            htmlAttrs: {
+                lang: "ru",
+            },
+            link: [
+                { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
+                { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+            ],
+        },
+    },
+
     css: [
         "~/assets/css/main.css",
     ],

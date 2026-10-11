@@ -9,6 +9,7 @@
             <nuxt-link
                 to="https://certificates.dev/nuxt/certificates/9d13ed76-99ff-48bf-9649-271e276c5487"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="block text-primary-500"
                 external
             >

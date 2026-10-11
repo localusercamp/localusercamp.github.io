@@ -27,8 +27,10 @@
                 :class="[
                     'rounded-3',
                     'w-full aspect-video max-md:max-h-50',
-                    'md:aspect-auto md:size-40',
-                    'object-cover object-center',
+                    'md:aspect-auto md:size-36.5',
+                    'object-contain object-center',
+                    'p-10 md:p-5',
+                    'dark:bg-text-white',
                 ]"
             />
         </div>

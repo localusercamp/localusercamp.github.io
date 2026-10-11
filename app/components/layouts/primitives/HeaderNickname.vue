@@ -11,7 +11,7 @@
         <p
             :class="[
                 'header-nickname',
-                'font-mono pt-1',
+                'font-mono pt-0.5 md:pt-1',
                 'whitespace-nowrap',
             ]"
             :style="{

@@ -4,6 +4,7 @@
             'w-full',
             'px-4 md:px-10',
             'flex flex-row items-start justify-center',
+            'scroll-mt-16 md:scroll-mt-20',
         ]"
     >
         <div

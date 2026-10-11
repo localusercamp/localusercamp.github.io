@@ -195,14 +195,14 @@
         --color-primary-900: #310e02;
         --color-primary-950: #230901;
 
-        --color-surface: var(--color-neutral-50);
-        --color-surface-accent: var(--color-neutral-100);
+        --color-surface: #ffffff;
+        --color-surface-accent: #ffffff;
         --color-border-neutral: var(--color-neutral-200);
         --color-text-ghosty: var(--color-neutral-700);
     }
 
     html * {
-        @apply transition-colors duration-300;
+        @apply transition-[color,background-color,border-color,text-decoration-color,fill,stroke] duration-300;
     }
 
     button:not(:disabled),
@@ -212,5 +212,10 @@
 
     button {
         @apply text-start;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+        @apply rounded-1 outline-2 outline-offset-2 outline-primary-500;
     }
 }

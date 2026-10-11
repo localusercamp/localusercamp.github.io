@@ -1,5 +1,6 @@
 <template>
     <section
+        v-if="images.length > 0"
         :class="[
             'project-view__section',
             'mt-4',

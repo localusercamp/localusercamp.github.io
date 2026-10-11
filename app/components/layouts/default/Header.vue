@@ -42,12 +42,17 @@
                     ]"
                 />
 
-                <ui-dark-mode-switch
+                <div
                     :class="[
+                        'flex flex-row items-center gap-1',
                         'order-1 md:order-3',
                         'justify-self-start md:justify-self-end',
                     ]"
-                />
+                >
+                    <ui-locale-switch class="order-2 md:order-1" />
+
+                    <ui-dark-mode-switch class="order-1 md:order-2" />
+                </div>
 
                 <HeaderBurger
                     :opened="menuOpened"

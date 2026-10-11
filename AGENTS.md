@@ -63,6 +63,8 @@ app/
       primitives/                 # SectionWrapper, SectionHeader, SectionDivider + index.ts
       sections/<name>/            # Section.vue + index.ts (+ local parts and types.ts)
   composables/                    # useXxx.ts, auto-imported by Nuxt
+  data/                           # shared content data (projects.ts)
+  templates/                      # HTML sources for generated artifacts (CV PDF, OG image)
 public/                           # statics: favicon.ico, media/images, media/icons
 docs/                             # GitHub Pages build artifact — do not edit by hand
 ```
@@ -99,6 +101,8 @@ Skills are auto-discovered from `.kilo/skills/`. Load the matching one:
 - `project-styling` — Tailwind tokens, themes, scoped CSS, keyframes, CSS variables.
 - `project-reka-ui` — composing interactive components from reka-ui primitives.
 - `project-vocabulary` — user-facing text and i18n via `useVocabulary`.
+- `project-content-sync` — regenerate the CV PDF, OG preview, `llms.txt`, JSON-LD, and
+  sitemap after content changes.
 
 ## Per-directory instructions
 

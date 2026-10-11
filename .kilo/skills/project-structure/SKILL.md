@@ -22,6 +22,8 @@ app/
       primitives/              # SectionWrapper, SectionHeader, SectionDivider + index.ts
       sections/<name>/         # Section.vue + index.ts (+ local parts and types.ts)
   composables/                 # useXxx.ts, auto-imported by Nuxt
+  data/                        # shared content data (projects.ts) — sections and pages import it
+  templates/                   # standalone HTML sources for generated artifacts (CV PDF, OG image)
 public/                        # favicon.ico, media/images, media/icons
 docs/                          # generated GitHub Pages output — do not edit
 ```
@@ -82,6 +84,11 @@ export {
 - Reusable reactive logic → `composables/useXxx.ts`.
 - New content section → `components/content/sections/<name>/Section.vue` + `index.ts`, then
   mount it in `pages/index.vue`.
+- Shared content data (e.g. the projects list) → `data/`, consumed by sections and
+  `pages/index.vue`.
+- Standalone HTML source for a generated artifact (CV PDF, OG preview) → `templates/`; it is
+  not processed by Nuxt and is only used by the generation commands from
+  `project-content-sync`.
 
 ## Related skills
 
