@@ -4,8 +4,8 @@
         :class="[
             'flex size-8 items-center justify-center',
             'rounded-2',
-            'font-mono font-medium',
-            'text-5 leading-6',
+            'font-semibold',
+            'text-4 leading-6',
             'text-primary-500',
             'hover:bg-neutral-100 dark:hover:bg-neutral-900',
         ]"

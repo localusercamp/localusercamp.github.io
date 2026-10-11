@@ -27,6 +27,8 @@ sitemap are derived copies and must be updated after any content change.
   to mirror the sources; keep the A4 print CSS, the strict B/W style, and the section order
   (О себе, Ключевые навыки, Опыт работы, Образование, Сертификаты, Языки).
 - `public/documents/Evgeniy_Polozov_CV.pdf` — regenerate from the HTML (command below).
+- `app/templates/resume.ru.md` — plain-text resume for HH / Habr Career (portfolio link on
+  top). Hand-edit; keep it in sync with the projects data, contacts and education facts.
 - `app/templates/og.html` — OG preview source (1200×630: dark background, name, role, green
   gradient), not processed by Nuxt. Hand-edit the name and role when they change.
 - `public/media/images/og.png` — regenerate from the HTML (command below).
@@ -87,13 +89,16 @@ at 2x scale.
 
 - New / edited project: `app/data/projects.ts` (both locales) → JSON-LD `ItemList` picks it up
   automatically → CV «Опыт работы» (bullets, stack, links, results) → `llms.txt` project
-  entry → PDF → sitemap `lastmod`.
+  entry → PDF → sitemap `lastmod`. Project screenshots added to `public/media/images` must be
+  pre-compressed first: max 1600px wide, webp q≈80 (`pnpm dlx sharp-cli -i <src> -o <dir>
+  resize 1600 --withoutEnlargement --fit inside -f webp -q 80`) — GitHub Pages serves static
+  files with a 10-minute cache and does no on-the-fly image optimization.
 - Personal info / contacts: vocabulary → CV header → `llms.txt` → JSON-LD (`name`, `email`,
   `sameAs`) → `seo_title` / `seo_description` if the role changed → `og/og.png` → PDF.
 - Skills: `skills/Section.vue` → CV «Ключевые навыки» → `llms.txt` → JSON-LD `knowsAbout` → PDF.
 - Certificate: hero link → CV «Сертификаты» → `llms.txt` → JSON-LD `hasCredential` → PDF.
 - Employer / education / languages / phone: `app/templates/cv.ru.html` → `llms.txt` → JSON-LD
-  (`worksFor`, `alumniOf`) → PDF.
+  (`worksFor`, `alumniOf`) → PDF → `resume.ru.md`.
 
 ## Validation
 

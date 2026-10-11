@@ -47,6 +47,7 @@
                         <ui-img
                             :src="image"
                             alt="Скриншот системы"
+                            loading="lazy"
                             :class="[
                                 'max-h-full max-w-full',
                                 'rounded-4',

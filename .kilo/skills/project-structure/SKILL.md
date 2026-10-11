@@ -23,7 +23,7 @@ app/
       sections/<name>/         # Section.vue + index.ts (+ local parts and types.ts)
   composables/                 # useXxx.ts, auto-imported by Nuxt
   data/                        # shared content data (projects.ts) — sections and pages import it
-  templates/                   # standalone HTML sources for generated artifacts (CV PDF, OG image)
+  templates/                   # standalone sources for generated artifacts (CV PDF, OG image, HH/Habr resume)
 public/                        # favicon.ico, media/images, media/icons
 docs/                          # generated GitHub Pages output — do not edit
 ```

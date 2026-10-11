@@ -25,6 +25,7 @@
                 <ui-img
                     :src="image"
                     alt="Скриншот системы"
+                    loading="lazy"
                     :class="[
                         'h-full w-full',
                         'object-cover object-center',
