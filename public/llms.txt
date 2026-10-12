@@ -5,7 +5,7 @@
 - Английский: B1 (чтение технической документации, рабочая переписка)
 - Формат работы: удалённо
 - CV в PDF: https://localusercamp.github.io/documents/Evgeniy_Polozov_CV.pdf
-- Email: localusercamp.job@ro.ru
+- Email: localusercamp.job@proton.me
 - Telegram: https://t.me/localusercamp (@localusercamp)
 - GitHub: https://github.com/localusercamp
 

@@ -7,7 +7,7 @@
 ## Контакты
 
 - Телефон: +7 900 387 28 38
-- Email: localusercamp.job@ro.ru
+- Email: localusercamp.job@proton.me
 - Telegram: [t.me/localusercamp](https://t.me/localusercamp)
 - GitHub: [github.com/localusercamp](https://github.com/localusercamp)
 - Формат работы: удалённо
